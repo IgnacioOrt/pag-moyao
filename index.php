@@ -6,31 +6,25 @@
 	<title>M.C. Yolanda Moyao Martínez</title>
 	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 </head>
 
 <body >
-	<nav class="navbar fixed-top navbar-expand-md">
-    	<div class="container">
-	        <a class="navbar-brand" href="index.php"></a>
-        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	            <span class="navbar-toggler-icon"></span>
-        	</button>
-        	<div class="collapse navbar-collapse" id="navbarNav">
-	            <ul class="navbar-nav">
-                	<li class="nav-item">
-	                    <a class="nav-link scroll-link" href="consulta.php">Consulta de receta</a>
-                	</li>
-                	<li class="nav-item">
-	                    <a class="nav-link scroll-link" href="noticias.php">Noticias</a>
-                	</li>
-	                <li class="nav-item">
-                    	<a class="nav-link scroll-link" href="acerca.php">Acerca de</a>
-                	</li>
-            	</ul>
-        	</div>
-    	</div>
-	</nav>
+<h1>Edit Article</h1>
+  <form action="form_handler.php" method="post">
+    <div>
+      <textarea cols="80" rows="10" id="content" name="content"> 
+        &lt;h1&gt;Article Title&lt;/h1&gt;
+        &lt;p&gt;Here's some sample text&lt;/p&gt;
+      </textarea>
+      <script type="text/javascript">
+        CKEDITOR.replace( 'articleContent' );
+      </script>
+      <input type="submit" value="Submit"/>
+    </div>
+  </form>
 	<script src="dist/jquery/jquery.slim.min.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>
 	<script src="dist/popper/umd/popper.min.js"></script>
