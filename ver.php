@@ -9,9 +9,12 @@
 </head>
 <body>
 
-
-  <script src="dist/jquery/jquery.slim.min.js"></script>
+  <?php
+    echo($_GET['content']);
+  ?>
+	<script src="dist/jquery/jquery.slim.min.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>
 	<script src="dist/popper/umd/popper.min.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
 </body>
 </html>
