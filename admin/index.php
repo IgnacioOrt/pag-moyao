@@ -19,6 +19,9 @@
         <a href="../" class="btn btn-link" target="_blank">
             <i class="icon icon-home"> Visitar sitio</i>
         </a>
+        <a href="../" class="btn btn-link" target="_blank">
+            <i class="icon icon-plus"> Añadir</i>
+        </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
             <i class="fa fa-bars"></i>
         </a>
@@ -51,10 +54,19 @@
             <nav class="sidebar-nav">
                 <ul class="nav">
                     <li class="nav-title"></li>
-
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link">
+                            <i class="icon icon-home"></i>Inicio
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">
-                            <i class="icon icon-home"></i>Páginas
+                            <i class="icon icon-docs"></i>Páginas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="icon icon-settings"></i>Ajustes
                         </a>
                     </li>
                 </ul>
