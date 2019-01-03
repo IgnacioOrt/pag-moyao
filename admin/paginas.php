@@ -131,9 +131,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">Acceso rapidos</div>
+                            <div class="card-header bg-light">Páginas</div>
                             <div class="card-body">
-                                <a href="edit-index.php"><i class="icon icon-note"> Editar página de inicio</i></a>
+                                <a href="agregarPagina">Agregar página</a>
                             </div>
                         </div>
                     </div>
