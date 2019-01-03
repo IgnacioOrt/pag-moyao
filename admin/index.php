@@ -19,7 +19,7 @@
 		}
 		.texto2{
 			font-family: 'Fira Sans', sans-serif;
-			font-weight: bold;
+			font-weight: normal;
 			font-size: 1em;
 		}
 		body{
@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="ajustes.php" class="nav-link">
+                        <a href="index.html" class="nav-link">
                             <i class="icon icon-settings"></i>Ajustes
                         </a>
                     </li>
@@ -102,7 +102,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Acceso rapidos</div>
                             <div class="card-body">
-                                <a href="edit-index.php"><i class="icon icon-note"> <b>Editar página de inicio</b></i></a>
+                                <a href="edit-index.php"><i class="icon icon-note"> Editar página de inicio</i></a>
                             </div>
                         </div>
                     </div>
