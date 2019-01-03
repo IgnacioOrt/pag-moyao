@@ -7,29 +7,58 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-	<style>
-		.texto{
-			font-family: 'Lato', sans-serif;
-			font-weight: lighter;
-			font-size: 1.3em;
-		}
-		.texto2{
-			font-family: 'Fira Sans', sans-serif;
-			font-weight: normal;
-			font-size: 1em;
-		}
-		body{
-			font-family: 'Karla', sans-serif;
-			font-size: 1rem;
-		}
-		.sidebar{
-			background-color:antiquewhite;
-		}
-	</style>
+    <style>
+        .texto{
+            font-family: 'Lato', sans-serif;
+            font-weight: lighter;
+            font-size: 1.3em;
+            
+        }
+        .texto2{
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: normal;
+            font-size: 1em;
+        }
+        body{
+            font-family: 'Karla', sans-serif;
+            font-size: 1rem;
+        }
+        .sidebar{
+            background-color:antiquewhite;
+            
+        }
+        .sidebar .nav-link{
+            color: black;
+        }
+        .sidebar .nav-link i:first-of-type{
+            color:black;
+        }
+        
+        .enlace:hover{
+            background-color:white;
+        }
+        
+        .enlace2:active{
+            background-color:lightpink;
+        }
+        .page-header{
+            background-image: url("imgs/banner.png");
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: contain;
+            
+        }
+        
+    
+        
+        
+    </style>
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -38,10 +67,10 @@
             <i class="fa fa-bars"></i>
         </a>
 
-        <a href="../" class="btn btn-link" target="_blank">
+        <a href="../" class="btn btn-secondary" target="_blank" >
             <i class="icon icon-home"> <span class="texto2">Visitar sitio</span></i>
         </a>
-        <a href="../" class="btn btn-link" target="_blank">
+        <a href="../" class="btn btn-secondary" target="_blank">
             <i class="icon icon-plus"><span class="texto2"> Añadir</span> </i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -63,7 +92,7 @@
                         <i class="fa fa-wrench"></i> Ajustes
                     </a>
 
-                    <a href="#" class="dropdown-item">
+                    <a href="#" class="dropdown-item" >
                         <i class="fa fa-lock"></i> Cerrar sesión
                     </a>
                 </div>
@@ -77,17 +106,21 @@
                 <ul class="nav texto">
                     <li class="nav-title"></li>
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link">
+                        <a href="index.php" class="nav-link enlace enlace2">
                             <i class="icon icon-home"></i>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">
+                        <a href="index.html" class="nav-link enlace enlace2">
                             <i class="icon icon-docs"></i>Páginas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="ajustes.php" class="nav-link">
+
+                        <!--<a href="index.html" class="nav-link enlace enlace2">-->
+
+                        <a href="ajustes.php" class="nav-link enlace enlace2">
+
                             <i class="icon icon-settings"></i>Ajustes
                         </a>
                     </li>
