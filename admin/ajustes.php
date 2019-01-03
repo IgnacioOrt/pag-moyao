@@ -90,12 +90,28 @@
                                             <label for="normal-input" class="form-control-label">Descripción corta </label>
                                             <input id="normal-input" class="form-control">
                                         </div>
-                                        <div class="input-group mb-3">
+                                        <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                                             </div>
                                             <input type="text" class="form-control" placeholder="Nombre de usuario">
                                         </div>
+                                        <br>
+                                        <label>Cambiar contraseña</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                
+                                                <div class="form-group"><label for="normal-input" class="form-control-label">Contraseña </label>
+                                                    <input id="normal-input" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group"><label for="normal-input" class="form-control-label">Confirmar contraseña </label>
+                                                    <input id="normal-input" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary px-5">Guardar cambios</button>
                                     </div>
                                 </div>
                             </div>
