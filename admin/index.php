@@ -16,8 +16,8 @@
             <i class="fa fa-bars"></i>
         </a>
 
-        <a class="navbar-brand" href="#">
-            <img src="./imgs/logo.png" alt="logo">
+        <a href="../" class="btn btn-link" target="_blank">
+            <i class="icon icon-home"> Visitar sitio</i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
             <i class="fa fa-bars"></i>
@@ -50,11 +50,11 @@
         <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <li class="nav-title">Navigation</li>
+                    <li class="nav-title"></li>
 
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">
-                            <i class="icon icon-speedometer"></i> Dashboard
+                            <i class="icon icon-home"></i>Páginas
                         </a>
                     </li>
                 </ul>
