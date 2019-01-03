@@ -78,9 +78,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">Acceso rapidos</div>
+                            <div class="card-header bg-light">Ajustes</div>
                             <div class="card-body">
-                                <a href="edit-index.php"><i class="icon icon-note"> <b>Editar página de inicio</b></i></a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="normal-input" class="form-control-label">Titulo del sitio</label>
+                                            <input id="normal-input" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="normal-input" class="form-control-label">Descripción corta </label>
+                                            <input id="normal-input" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Nombre de usuario">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
