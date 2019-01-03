@@ -78,7 +78,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            
+                            <div class="card-header bg-light">Acceso rapidos</div>
+                            <div class="card-body">
+                                <a href="edit-index.php"><i class="icon icon-note"> Editar página de inicio</i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
