@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">
+                        <a href="ajustes.php" class="nav-link">
                             <i class="icon icon-settings"></i>Ajustes
                         </a>
                     </li>
