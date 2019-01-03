@@ -7,29 +7,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-	<style>
-		.texto{
-			font-family: 'Lato', sans-serif;
-			font-weight: lighter;
-			font-size: 1.3em;
-		}
-		.texto2{
-			font-family: 'Fira Sans', sans-serif;
-			font-weight: bold;
-			font-size: 1em;
-		}
-		body{
-			font-family: 'Karla', sans-serif;
-			font-size: 1rem;
-		}
-		.sidebar{
-			background-color:antiquewhite;
-		}
-	</style>
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -39,10 +17,10 @@
         </a>
 
         <a href="../" class="btn btn-link" target="_blank">
-            <i class="icon icon-home"> <span class="texto2">Visitar sitio</span></i>
+            <i class="icon icon-home"> Visitar sitio</i>
         </a>
         <a href="../" class="btn btn-link" target="_blank">
-            <i class="icon icon-plus"><span class="texto2"> Añadir</span> </i>
+            <i class="icon icon-plus"> Añadir</i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
             <i class="fa fa-bars"></i>
@@ -53,7 +31,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <!-- <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo"> -->
-                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2">Cuenta</span>
+                    <span class="small ml-1 d-md-down-none">Cuenta</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -74,7 +52,7 @@
     <div class="main-container">
         <div class="sidebar">
             <nav class="sidebar-nav">
-                <ul class="nav texto">
+                <ul class="nav">
                     <li class="nav-title"></li>
                     <li class="nav-item">
                         <a href="index.php" class="nav-link">
@@ -100,9 +78,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">Acceso rapidos</div>
+                            <div class="card-header bg-light">Ajustes</div>
                             <div class="card-body">
-                                <a href="edit-index.php"><i class="icon icon-note"> <b>Editar página de inicio</b></i></a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="normal-input" class="form-control-label">Titulo del sitio</label>
+                                            <input id="normal-input" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="normal-input" class="form-control-label">Descripción corta </label>
+                                            <input id="normal-input" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Nombre de usuario">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
