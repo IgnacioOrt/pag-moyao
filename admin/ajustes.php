@@ -14,6 +14,10 @@
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body class="sidebar-fixed header-fixed">
+	<?php session_start(); 
+	if(!isset($_SESSION['nom'])) header("Location: login.html");
+
+	?>
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -35,7 +39,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <!-- <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo"> -->
-                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2">Cuenta</span>
+                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2"><?php $var=$_SESSION['nom']; echo "$var";?></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -45,7 +49,7 @@
                         <i class="fa fa-wrench"></i> Ajustes
                     </a>
 
-                    <a href="#" class="dropdown-item">
+                    <a href="php/salir.php" class="dropdown-item">
                         <i class="fa fa-lock"></i> Cerrar sesión
                     </a>
                 </div>
