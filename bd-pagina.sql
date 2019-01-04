@@ -1,0 +1,6 @@
+DROP DATABASE IF EXISTS pagina;
+CREATE DATABASE pagina;
+USE pagina;
+
+DROP TABLE IF EXISTS administrador;
+CREATE TABLE 
