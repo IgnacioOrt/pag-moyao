@@ -87,6 +87,19 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        <?php
+                        if (isset($_POST['enviar'])) {
+                            ?>
+                                        <div class="alert alert-dismissible alert-primary">
+                                            boton presionado
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                              
+                            <?php
+                        }
+                        ?>
                         <div class="card">
                             <div class="card-header bg-light">Ajustes</div>
                             <div class="card-body">
@@ -144,11 +157,6 @@
                                                 echo "<h3>Error generando la consulta</h3>";
                                             }
                                         ?>
-                                        
-        
-<?php
-  var_dump($_POST)
-?>
                                     </div>
                                 </div>
                             </div>
