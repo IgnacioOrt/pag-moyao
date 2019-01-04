@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
     <link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -16,11 +17,11 @@
             <i class="fa fa-bars"></i>
         </a>
 
-        <a href="../" class="btn btn-link" target="_blank">
-            <i class="icon icon-home"> Visitar sitio</i>
+         <a href="../" class="btn btn-secondary" target="_blank" >
+            <i class="icon icon-home"> <span class="texto2">Visitar sitio</span></i>
         </a>
-        <a href="../" class="btn btn-link" target="_blank">
-            <i class="icon icon-plus"> Añadir</i>
+        <a href="../" class="btn btn-secondary" target="_blank">
+            <i class="icon icon-plus"><span class="texto2"> Añadir</span> </i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
             <i class="fa fa-bars"></i>
@@ -31,7 +32,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <!-- <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo"> -->
-                    <span class="small ml-1 d-md-down-none">Cuenta</span>
+                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2">Cuenta</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -52,20 +53,22 @@
     <div class="main-container">
         <div class="sidebar">
             <nav class="sidebar-nav">
-                <ul class="nav">
+                  <ul class="nav texto">
                     <li class="nav-title"></li>
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link">
+                        <a href="index.php" class="nav-link enlace enlace2">
                             <i class="icon icon-home"></i>Inicio
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">
+                        <a href="paginas.php" class="nav-link enlace enlace2">
                             <i class="icon icon-docs"></i>Páginas
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="ajustes.php" class="nav-link">
+
+                        <!--<a href="index.html" class="nav-link enlace enlace2">-->
+                        <a href="ajustes.php" class="nav-link enlace enlace2">
                             <i class="icon icon-settings"></i>Ajustes
                         </a>
                     </li>
@@ -111,7 +114,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary px-5">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-outline-primary px-5">Guardar cambios</button>
                                     </div>
                                 </div>
                             </div>

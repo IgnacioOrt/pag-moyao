@@ -11,54 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .texto{
-            font-family: 'Lato', sans-serif;
-            font-weight: lighter;
-            font-size: 1.3em;
-            
-        }
-        .texto2{
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: normal;
-            font-size: 1em;
-        }
-        body{
-            font-family: 'Karla', sans-serif;
-            font-size: 1rem;
-        }
-        .sidebar{
-            background-color:antiquewhite;
-            
-        }
-        .sidebar .nav-link{
-            color: black;
-        }
-        .sidebar .nav-link i:first-of-type{
-            color:black;
-        }
-        
-        .enlace:hover{
-            background-color:white;
-        }
-        
-        .enlace2:active{
-            background-color:lightpink;
-        }
-        .page-header{
-            background-image: url("imgs/banner.png");
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            background-attachment: contain;
-            
-        }
-        
+	<link rel="stylesheet" href="css/estilos.css">
     
-        
-        
-    </style>
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -133,7 +87,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Páginas</div>
                             <div class="card-body">
-                                <button><a href="agregarPagina">Agregar página</a></button>
+                                <button class="btn btn-outline-secondary btn-sm"><a href="agregarPagina" style="color:black;">Agregar página</a></button>
                                 
 
                                 <div class="table-responsive">
