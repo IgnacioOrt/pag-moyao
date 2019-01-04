@@ -135,7 +135,7 @@
                                             </div>
                                         </div>
                                         <div id="errores"></div>
-                                        <button type="submit" class="btn btn-outline-primary px-5">Guardar cambios</button>
+                                        <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios">
                                         </form>
                                         <?php
                                             }
@@ -144,6 +144,11 @@
                                                 echo "<h3>Error generando la consulta</h3>";
                                             }
                                         ?>
+                                        
+        
+<?php
+  var_dump($_POST)
+?>
                                     </div>
                                 </div>
                             </div>
@@ -194,8 +199,3 @@
 </script>
 </body>
 </html>
-<?php
-  if (isset($_POST[''])) {
-        # code...
-    }  
-?>
