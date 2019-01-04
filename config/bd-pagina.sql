@@ -8,7 +8,7 @@ CREATE TABLE administrador(
 	password VARCHAR(100) NOT NULL
 );
 
-INSERT INTO administrador (username,password) VALUES ('admin','91fafacd1b1e8ee2150800333892a0584594327bea6003533aea7250c5a2e7f9');
+INSERT INTO administrador (username,password) VALUES ('admin','aecdee96e9359dbd81fca2ce1984501493f328d445225d123f4c202f2928ee5e');
 
 DROP TABLE IF EXISTS sitio;
 CREATE TABLE sitio(
@@ -19,5 +19,7 @@ CREATE TABLE sitio(
 INSERT INTO sitio (title) VALUES ('M.C. Yolanda Moyao Martínez');
 
 DROP TABLE IF EXISTS pagina;
-CREATE TABLE sitio(
+CREATE TABLE pagina(
+	title TEXT,
+	content TEXT
 );
