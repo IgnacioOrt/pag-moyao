@@ -16,7 +16,8 @@ if($row = $result->fetch_array(MYSQLI_NUM)){
 	$result2=$base->ExecuteQuery($query2);
 	if($row2=$result2->fetch_array(MYSQLI_NUM)){
 		
-		$_SESSION['nomA']=$row2['username'];
+		$_SESSION['nom']=$row2[0];
+		
 		header("Location: ../index.php");
 	}else{
 		header("Location: ../error2.html");
