@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS master_moyao;
 CREATE DATABASE master_moyao;
-USE pagina;
+USE  master_moyao;
 
 DROP TABLE IF EXISTS administrador;
 CREATE TABLE administrador(
