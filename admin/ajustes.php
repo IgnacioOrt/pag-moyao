@@ -115,6 +115,17 @@
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-outline-primary px-5">Guardar cambios</button>
+
+                                        <?php
+                                            $contra = "aecdee96e9359dbd81fca2ce1984501493f328d445225d123f4c202f2928ee5eaecdee96e9359dbd81fca2ce1984501493f328d445225d123f4c202f2928ee5eaecdee96e9359dbd81fca2ce1984501493f328d445225d123f4c202f2928ee5eaecdee96e9359dbd81fca2ce1984501493f328d445225d123f4c202f2928ee5eaecdee96e9359dbd81fca2ce1984501493f328d445225d123f4c202f2928ee5e";
+                                            
+                                            $contra = md5($contra);
+                                            $contra = hash('sha256', $contra);
+                                            echo "<br>$contra<br>";
+                                            echo "<br>";
+                                            
+                                            
+                                        ?>
                                     </div>
                                 </div>
                             </div>
