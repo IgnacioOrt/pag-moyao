@@ -11,15 +11,56 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/estilos.css">
-  
+    <style>
+        .texto{
+            font-family: 'Lato', sans-serif;
+            font-weight: lighter;
+            font-size: 1.3em;
+            
+        }
+        .texto2{
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: normal;
+            font-size: 1em;
+        }
+        body{
+            font-family: 'Karla', sans-serif;
+            font-size: 1rem;
+        }
+        .sidebar{
+            background-color:antiquewhite;
+            
+        }
+        .sidebar .nav-link{
+            color: black;
+        }
+        .sidebar .nav-link i:first-of-type{
+            color:black;
+        }
+        
+        .enlace:hover{
+            background-color:white;
+        }
+        
+        .enlace2:active{
+            background-color:lightpink;
+        }
+        .page-header{
+            background-image: url("imgs/banner.png");
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: contain;
+            
+        }
+        
+    
+        
+        
+    </style>
 </head>
-	
 <body class="sidebar-fixed header-fixed">
-	<?php session_start(); 
-	if(!isset($_SESSION['nom'])) header("Location: login.html");
-
-	?>
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -41,7 +82,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <!-- <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo"> -->
-                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2"><?php $var=$_SESSION['nom']; echo "$var";?></span>
+                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2">Cuenta</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -51,7 +92,7 @@
                         <i class="fa fa-wrench"></i> Ajustes
                     </a>
 
-                    <a href="php/salir.php" class="dropdown-item" >
+                    <a href="#" class="dropdown-item" >
                         <i class="fa fa-lock"></i> Cerrar sesión
                     </a>
                 </div>
@@ -90,9 +131,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">Acceso rapidos</div>
+                            <div class="card-header bg-light">Agregar página</div>
                             <div class="card-body">
-                                <a href="edit-index.php"><i class="icon icon-note"> Editar página de inicio</i></a>
+                                <div class="form-group">
+                                    <label for="normal-input" class="form-control-label">Titulo</label>
+                                    <input id="normal-input" class="form-control">
+                                </div>
+                                <form method="post">
+    <textarea id="mytextarea">Hello, World!</textarea>
+  </form>
                             </div>
                         </div>
                     </div>
@@ -107,5 +154,11 @@
 <script src="./vendor/chart.js/chart.min.js"></script>
 <script src="./js/carbon.js"></script>
 <script src="./js/demo.js"></script>
+<script src='tinymce/tinymce.min.js'></script>
+<script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
 </body>
 </html>
