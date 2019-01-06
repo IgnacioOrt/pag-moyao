@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/estilos.css">
+	
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -91,6 +92,11 @@
                                         <label for="Titulo" class="form-control-label">Titulo</label>
                                         <input id="Titulo" class="form-control" name="title" required>
                                     </div>
+									<div class="form-group">
+          								<div class="col-sm-8">
+            								<input type="file" class="form-control" id="miarchivo[]" name="miarchivo[]" multiple="">
+          								</div>
+									</div>
                                     <textarea id="mytextarea" name="content"></textarea>
                                     <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios">
                                 </form>
@@ -107,6 +113,7 @@
                             </div>
                         </div>
                     </div>
+					
                 </div>
             </div>
         </div>
