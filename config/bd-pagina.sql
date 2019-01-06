@@ -24,3 +24,4 @@ CREATE TABLE pagina(
 	title TEXT,
 	content TEXT
 );
+

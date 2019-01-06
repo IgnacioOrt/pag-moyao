@@ -11,12 +11,12 @@
       require_once 'admin/config/config.php';
       require_once 'admin/config/conexion.php';
       $base = new dbmysqli($hostname,$username,$password,$database);
-      $query="SELECT sitio.title, sitio.description FROM sitio;";
+      $query="SELECT pagina.title FROM pagina;";
       $result = $base->ExecuteQuery($query);
       if($result){
         if ($row=$base->GetRows($result)){
           ?>
-          <title><?php echo (utf8_encode($row[0]." | ".$row[1]));?></title>
+          <title><?php echo (utf8_encode($row[0]));?></title>
           <?php
         }
         $base->SetFreeResult($result);
@@ -60,7 +60,7 @@
                 while ($row=$base->GetRows($result)) {
                   ?>
                     <li class="nav-item">
-                      
+
                       <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row[0]) ?>" enctype="multipart/form-data"><?php echo ($row[1]); ?></a>
                     </li>
                   <?php
@@ -80,14 +80,15 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
               <?php
-                $query="SELECT sitio.title, sitio.description FROM sitio;";
+                $id_pagina = $_GET['id_pagina'];
+                $query="SELECT pagina.title, pagina.content FROM pagina WHERE id_pagina = $id_pagina";
                 $result = $base->ExecuteQuery($query);
                 if($result){
                   if ($row=$base->GetRows($result)){
                     ?>
                     <h1><?php echo (utf8_encode($row[0])); ?></h1>
-                    <span class="subheading"><?php echo (utf8_encode($row[1])) ?></span>
                     <?php
+                    $content = $row[1];
                   }
                   $base->SetFreeResult($result);
                 }else {
@@ -106,7 +107,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          
+          <?php
+            if (isset($content)) {
+              echo($content);
+            }
+          ?>
         </div>
       </div>
     </div>

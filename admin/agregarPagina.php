@@ -11,54 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .texto{
-            font-family: 'Lato', sans-serif;
-            font-weight: lighter;
-            font-size: 1.3em;
-            
-        }
-        .texto2{
-            font-family: 'Fira Sans', sans-serif;
-            font-weight: normal;
-            font-size: 1em;
-        }
-        body{
-            font-family: 'Karla', sans-serif;
-            font-size: 1rem;
-        }
-        .sidebar{
-            background-color:antiquewhite;
-            
-        }
-        .sidebar .nav-link{
-            color: black;
-        }
-        .sidebar .nav-link i:first-of-type{
-            color:black;
-        }
-        
-        .enlace:hover{
-            background-color:white;
-        }
-        
-        .enlace2:active{
-            background-color:lightpink;
-        }
-        .page-header{
-            background-image: url("imgs/banner.png");
-            background-color: transparent;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-            background-attachment: contain;
-            
-        }
-        
-    
-        
-        
-    </style>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -133,13 +86,24 @@
                         <div class="card">
                             <div class="card-header bg-light">Agregar página</div>
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="normal-input" class="form-control-label">Titulo</label>
-                                    <input id="normal-input" class="form-control">
-                                </div>
-                                <form method="post">
-    <textarea id="mytextarea">Hello, World!</textarea>
-  </form>
+                                <form method="post" action="agregarPagina.php">
+                                    <div class="form-group">
+                                        <label for="Titulo" class="form-control-label">Titulo</label>
+                                        <input id="Titulo" class="form-control" name="title" required>
+                                    </div>
+                                    <textarea id="mytextarea" name="content"></textarea>
+                                    <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios">
+                                </form>
+
+                                <?php
+                                    if (isset($_POST['enviar'])) {
+                                        require_once 'config/config.php';
+                                        require_once 'config/conexion.php';
+                                        $base = new dbmysqli($hostname,$username,$password,$database);
+                                        $insert = array("title" => $_POST['title'], "content" => $_POST['content']);
+                                        $base ->insertar("pagina", $insert);
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -156,9 +120,16 @@
 <script src="./js/demo.js"></script>
 <script src='tinymce/tinymce.min.js'></script>
 <script>
-  tinymce.init({
-    selector: '#mytextarea'
+   tinymce.init({
+    selector: '#mytextarea',
+    plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'save table contextmenu directionality emoticons template paste textcolor'
+    ],
+    content_css: 'css/content.css',
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
   });
-  </script>
+</script>
 </body>
 </html>
