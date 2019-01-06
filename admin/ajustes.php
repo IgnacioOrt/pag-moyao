@@ -125,18 +125,19 @@
                                             <label for="Descripcion" class="form-control-label">Descripción corta </label>
                                             <input id="Descripcion" name="description" class="form-control" value="<?php echo(utf8_encode($row[2])); ?>">
                                         </div>
+                                        <label for="usuario" class="form-control-label">Nombre de usuario<br></label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                                             </div>
-                                            <input type="text" name="username" class="form-control" placeholder="Nombre de usuario" value="<?php echo($row[0]); ?>">
+                                            <input id="usuario" type="text" name="username" class="form-control" placeholder="Nombre de usuario" value="<?php echo($row[0]); ?>">
                                         </div>
                                         <br>
                                         <label>Cambiar contraseña</label>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="pass1" class="form-control-label">Contraseña </label>
+                                                    <label for="pass1" class="form-control-label">Nueva contraseña </label>
                                                     <input type="password" name="password1" id="pass1" class="form-control" >
                                                 </div>
                                             </div>
