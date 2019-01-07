@@ -91,6 +91,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Páginas</div>
                             <div class="card-body">
+                                <div id="cambios"></div>
                                 <div class="mb-4">
                                     <button class="btn btn-outline-secondary btn-sm"><a href="agregarPagina.php" style="color:black;">Agregar página</a></button>
                                 </div>
@@ -190,6 +191,23 @@
         var select = "select" + val;
         var inferior = val;
         var superior = document.getElementById(select).value;
+        var datos = {
+                "i" : val,
+                "s" : document.getElementById(select).value
+        };
+        $.ajax({
+            type: "POST",
+            url: "superior.php",
+            data: datos,
+            dataType: "html",
+            error: function(){
+                alert("error petición ajax");
+            },
+            success: function(data){                                                    
+                $("#cambios").empty();
+                $("#cambios").append(data);
+            }
+        });
         console.log(inferior + " " + superior);
     }
 </script>

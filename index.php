@@ -56,6 +56,7 @@
             </li>
             <?php
               $query="SELECT pagina.id_pagina, pagina.title FROM pagina;";
+              $query2 = "SELECT id_pagina FROM subpagina";
               $result = $base->ExecuteQuery($query);
               if ($result) {
                 while ($row=$base->GetRows($result)) {
