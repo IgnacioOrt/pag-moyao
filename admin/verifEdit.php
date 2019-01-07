@@ -24,7 +24,7 @@ foreach($_FILES["miarchivo"]['tmp_name'] as $key => $tmp_name)
 
     $dir=opendir($carpeta);
     $target_path = $carpeta.'/'.$archivonombre; //indicamos la ruta de destino de los archivos
-
+    //echo "$target_path";
     if(move_uploaded_file($fuente, $target_path)) {
       mysqli_query($link,"insert into archivos values('$var','$target_path')");
       echo "\nLos archivos $archivonombre se han cargado de forma correcta.<br>";
@@ -34,5 +34,5 @@ foreach($_FILES["miarchivo"]['tmp_name'] as $key => $tmp_name)
       closedir($dir); //Cerramos la conexion con la carpeta destino
     }
 }
-//header("Location:../edit.php?id_pagina=$id");
+header("Location:edit.php?id_pagina=$id");
 ?>
