@@ -15,20 +15,37 @@
         	$result = $base->ExecuteQuery($delete); 
     		if($result){
     			?>
-    			<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=paginas.php">
+    			<!-- <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php"> -->
     			<?php
     		}else{
     			echo "Error al borrar";
     		}
         }else{
-        	$insert = array("id_pagina" => $inferior, "pagina_superior" => $superior);
-        	$base ->insertar("subpagina", $insert);
-        	?>
-        	<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=paginas.php">
-        	<?php
+        	$query = "SELECT *FROM subpagina WHERE id_pagina = $inferior";
+        	echo "$query";
+        	$res = $base->ExecuteQuery($query);
+        	if ($res) {
+        		if ($row = $base->GetRows($res)) {
+        			$update = "UPDATE subpagina SET pagina_superior = $superior WHERE id_pagina = inferior";
+        			if ($base->ExecuteQuery($update)) {
+        				echo "Movido a $inferior $superior";
+        				?>
+        				<!-- <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php"> -->
+        				<?php
+        			}else{
+        				echo "Error al mover";
+        			}
+        		}else{
+        			$insert = array("id_pagina" => $inferior, "pagina_superior" => $superior);
+        			$base ->insertar("subpagina", $insert);
+        			?>
+        			<!-- <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php"> -->
+        			<?php
+        		}
+        		$base->SetFreeResult($res);
+        	}else{
+        		echo "Error al conectar";
+        	}
         }
-        
-
-        //$query = "SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
 	}
 ?>
