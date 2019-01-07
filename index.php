@@ -95,6 +95,7 @@
                   <h1>Error inesperado al obtener titulo</h1>
                   <?php
                 }
+                $base->CloseConnection();
               ?>
             </div>
           </div>
