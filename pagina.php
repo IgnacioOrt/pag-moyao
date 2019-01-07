@@ -50,7 +50,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item py-2">
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
@@ -60,7 +60,15 @@
                 while ($row=$base->GetRows($result)) {
                   ?>
                     <li class="nav-item">
-                      <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
+                      	<div class="dropdown">
+							<a class="btn nav-link dropdown-toggle" data-toggle="dropdown" enctype="multipart/form-data" style="color: white;" ><?php echo ($row[1]); ?></a>
+							<div class="dropdown-menu">
+    							<a class="dropdown-item"  href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
+    							<a class="dropdown-item" href="#">Link 2</a>
+    							<a class="dropdown-item" href="#">Link 3</a>
+  							</div>
+						</div>
+                      
                     </li>
                   <?php
                 }
