@@ -38,3 +38,8 @@ CREATE TABLE archivos(
 	archivo varchar(150) not null
 );
 
+SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina);
+
+INSERT INTO subpagina (id_pagina,pagina_superior) VALUES (3,6);
+
+DELETE FROM subpagina WHERE id_pagina = 3;

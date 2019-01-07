@@ -110,9 +110,8 @@
                                             require_once 'config/conexion.php';
                                             $base = new dbmysqli($hostname,$username,$password,$database);
                                             $query = "SELECT pagina.id_pagina, pagina.title FROM pagina";
-                                            $query2 = "SELECT subpagina.id_pagina, subpagina.pagina_superior FROM subpagina";
+                                            $query2 = "SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
                                             $result = $base->ExecuteQuery($query);
-                                            $result2 = $base->ExecuteQuery($query);
                                             if($result){
                                                 while ($row=$base->GetRows($result)){
                                                     ?>
@@ -129,7 +128,32 @@
                                                                     <label for="select">Superior  </label>
                                                                     <select class="form-control" id="select" name="superior">
                                                                         <option selected value="1">Página principal (sin superior)</option>
-                                                                        
+                                                                        <?php
+                                                                            $result2 = $base->ExecuteQuery($query2);
+                                                                            if ($result2) {
+                                                                                while ($row2=$base->GetRows($result2)) {
+                                                                                    $query3 = "SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
+                                                                                    $result3 = $base->ExecuteQuery($query3);
+                                                                                    if ($result3) {
+
+                                                                                        if ($sql = $base->GetRows($result3)) {?>
+                                                                                    <script type="text/javascript">
+                                                                                        console.log( "<?php echo($query3); ?>");
+
+                                                                                    </script>
+                                                                                    <?php
+                                                                                            ?>
+                                                                                            <option selected onchange="obtenerID(<?php echo($row2[0]) ?>)"><?php echo($row2[1]) ?></option>
+                                                                                            <?php
+                                                                                        }else{
+                                                                                        ?>
+                                                                                        <option value="1" onchange="obtenerID(<?php echo($row2[0]) ?>)"><?php echo($row2[1]) ?></option>
+                                                                                        <?php   
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        ?>
                                                                     </select>
                                                                 </div>
                                                             </form>
@@ -161,5 +185,10 @@
 <script src="./vendor/chart.js/chart.min.js"></script>
 <script src="./js/carbon.js"></script>
 <script src="./js/demo.js"></script>
+<script type="text/javascript">
+    function obtenerID(id) {
+        console.log(id);
+    }
+</script>
 </body>
 </html>
