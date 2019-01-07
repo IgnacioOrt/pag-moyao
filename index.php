@@ -35,6 +35,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
+	
 
   </head>
 
@@ -118,33 +119,16 @@
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-lg-8 col-md-10 mx-auto text-center">
             <ul class="list-inline text-center">
               <li class="list-inline-item">
                 <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
+                  <span class="btn btn-dark" style="color:white">Contacto</span>
                 </a>
               </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
+              
             </ul>
+			  <span style="font-size:0.8em;font-weight: lighter;font-style: italic;"><br>M.C. Yolanda Moyao Martínez</span>
             <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
           </div>
         </div>
