@@ -126,29 +126,29 @@
                                                             <form class="form-inline" method="POST" action="#">
                                                                 <div class="form-group">
                                                                     <label for="select">Superior  </label>
-                                                                    <select class="form-control" id="select" name="superior">
+                                                                    <select class="form-control" id="select<?php echo($row[0])?>" name="superior" onchange="obtenerID(<?php echo ($row[0]) ?>)">
                                                                         <option selected value="1">Página principal (sin superior)</option>
                                                                         <?php
                                                                             $result2 = $base->ExecuteQuery($query2);
                                                                             if ($result2) {
+                                                                                $query3 = "SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
+                                                                                $result3 = $base->ExecuteQuery($query3);
                                                                                 while ($row2=$base->GetRows($result2)) {
-                                                                                    $query3 = "SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
-                                                                                    $result3 = $base->ExecuteQuery($query3);
+                                                                                    
                                                                                     if ($result3) {
 
-                                                                                        if ($sql = $base->GetRows($result3)) {?>
-                                                                                    <script type="text/javascript">
-                                                                                        console.log( "<?php echo($query3); ?>");
-
-                                                                                    </script>
-                                                                                    <?php
-                                                                                            ?>
-                                                                                            <option selected onchange="obtenerID(<?php echo($row2[0]) ?>)"><?php echo($row2[1]) ?></option>
-                                                                                            <?php
+                                                                                        if ($sql = $base->GetRows($result3)) {
+                                                                                            if ($row[0] != $row2[0]) {
+                                                                                                ?>
+                                                                                                <option value="<?php echo($row2[0])?>" selected><?php echo($row2[1]) ?></option>
+                                                                                                <?php
+                                                                                            }
                                                                                         }else{
-                                                                                        ?>
-                                                                                        <option value="1" onchange="obtenerID(<?php echo($row2[0]) ?>)"><?php echo($row2[1]) ?></option>
-                                                                                        <?php   
+                                                                                            if ($row[0] != $row2[0]) {
+                                                                                                ?>
+                                                                                                <option value="<?php echo($row2[0])?>"><?php echo($row2[1]) ?></option>
+                                                                                                <?php
+                                                                                            }
                                                                                         }
                                                                                     }
                                                                                 }
@@ -186,8 +186,11 @@
 <script src="./js/carbon.js"></script>
 <script src="./js/demo.js"></script>
 <script type="text/javascript">
-    function obtenerID(id) {
-        console.log(id);
+    function obtenerID(val) {
+        var select = "select" + val;
+        var inferior = val;
+        var superior = document.getElementById(select).value;
+        console.log(inferior + " " + superior);
     }
 </script>
 </body>
