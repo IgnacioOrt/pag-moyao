@@ -99,6 +99,7 @@
                                     <thead>
                                     <tr>
                                         <th>Título</th>
+                                        <th></th>
                                         <!-- <th>Fecha</th> -->
                                     </tr>
                                     </thead>
@@ -108,9 +109,10 @@
                                             require_once 'config/config.php';
                                             require_once 'config/conexion.php';
                                             $base = new dbmysqli($hostname,$username,$password,$database);
-                                            $query="SELECT pagina.id_pagina, pagina.title FROM pagina";
-
+                                            $query = "SELECT pagina.id_pagina, pagina.title FROM pagina";
+                                            $query2 = "SELECT subpagina.id_pagina, subpagina.pagina_superior FROM subpagina";
                                             $result = $base->ExecuteQuery($query);
+                                            $result2 = $base->ExecuteQuery($query);
                                             if($result){
                                                 while ($row=$base->GetRows($result)){
                                                     ?>
@@ -120,6 +122,17 @@
                                                             <!-- <a href="">Edición rapida |</a> -->
                                                             <a href="delete.php?id_pagina=<?php echo($row[0])?>" onclick="return confirm('¿Esta seguro que desea eliminar?');">Eliminar |</a>
                                                             <a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank">Vista previa</a>
+                                                        </td>
+                                                        <td>
+                                                            <form class="form-inline" method="POST" action="#">
+                                                                <div class="form-group">
+                                                                    <label for="select">Superior  </label>
+                                                                    <select class="form-control" id="select" name="superior">
+                                                                        <option selected value="1">Página principal (sin superior)</option>
+                                                                        
+                                                                    </select>
+                                                                </div>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                     <?php

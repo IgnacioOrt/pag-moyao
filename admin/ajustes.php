@@ -199,12 +199,16 @@
                                                     <label for="pass1" class="form-control-label">Nueva contraseña </label>
                                                     <input type="password" name="password1" id="pass1" class="form-control" >
                                                 </div>
+                                                <small id="passwordHelpInline" class="text-muted">
+                                                    La contraseña debe contener al menos ocho caracteres
+                                                </small>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="pass2" class="form-control-label">Confirmar contraseña </label>
-                                                    <input type="password" name="password2" id="pass2" class="form-control">
+                                                    <input type="password" name="password2" id="pass2" class="form-control" aria-describedby="passwordHelpInline">
                                                 </div>
+
                                             </div>
                                         </div>
                                         <div id="errores"></div>

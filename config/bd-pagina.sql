@@ -24,8 +24,15 @@ CREATE TABLE pagina(
 	title TEXT,
 	content TEXT
 );
+DROP TABLE IF EXISTS subpagina;
+CREATE TABLE subpagina(
+	id_pagina INT NOT NULL UNIQUE,
+	pagina_superior INT NOT NULL,
+	FOREIGN KEY(id_pagina) REFERENCES pagina(id_pagina),
+	FOREIGN KEY(pagina_superior) REFERENCES pagina(id_pagina)
+);
 
-DROP TABLE IF EXISTS pagina;
+DROP TABLE IF EXISTS archivos;
 CREATE TABLE archivos(
 	id_pagina int not null,
 	archivo varchar(150) not null

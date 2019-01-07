@@ -10,4 +10,11 @@
     }else{
         echo("error al eliminar");
     }
+    $delete="DELETE FROM archivos WHERE id_pagina = $id_pagina";
+    $result = $base->ExecuteQuery($delete); 
+    if($result){
+        echo("Eliminado correctamente");
+    }else{
+        echo("error al eliminar");
+    }
 ?>
