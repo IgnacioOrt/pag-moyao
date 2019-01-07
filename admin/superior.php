@@ -14,13 +14,18 @@
         	$delete = "DELETE FROM subpagina WHERE id_pagina = $inferior";
         	$result = $base->ExecuteQuery($delete); 
     		if($result){
-    			echo "";
+    			?>
+    			<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=paginas.php">
+    			<?php
     		}else{
     			echo "Error al borrar";
     		}
         }else{
         	$insert = array("id_pagina" => $inferior, "pagina_superior" => $superior);
-        	$base ->insertar("subpagina", $insert);	
+        	$base ->insertar("subpagina", $insert);
+        	?>
+        	<META HTTP-EQUIV="REFRESH" CONTENT="1;URL=paginas.php">
+        	<?php
         }
         
 

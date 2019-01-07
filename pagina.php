@@ -54,7 +54,7 @@
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
-              $query="SELECT pagina.id_pagina, pagina.title FROM pagina;";
+              $query="SELECT pagina.id_pagina, pagina.title FROM pagina,subpagina";
               $result = $base->ExecuteQuery($query);
               if ($result) {
                 while ($row=$base->GetRows($result)) {
