@@ -58,7 +58,7 @@
             <?php
               //$query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
               $query2 = "SELECT subpagina.id_pagina,pagina.title FROM  subpagina";
-              $query = "SELECT pagina_superior FROM subpagina";
+              $query = "SELECT DISTINCT pagina_superior FROM subpagina ";
 
               $result = $base->ExecuteQuery($query);
               
