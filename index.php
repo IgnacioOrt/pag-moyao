@@ -55,12 +55,31 @@
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
-              $query="SELECT pagina.id_pagina, pagina.title FROM pagina;";
+              //$query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
               $query2 = "SELECT subpagina.id_pagina,pagina.title FROM  subpagina";
-              $result = $base->ExecuteQuery($query2);
+              $query = "SELECT pagina_superior FROM subpagina";
+
+              $result = $base->ExecuteQuery($query);
+              
+              //$result3 = $base->ExecuteQuery($query3);
+
               if ($result) {
+
                 while ($row=$base->GetRows($result)) {
+                  $query2 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina INT (SELECT id_pagina FROM subpagina WHERE pagina_superior = $row[0])";
+                  $result2 = $base->ExecuteQuery($query2);
+                  if ($result2) {
+                    while ($row2= $base->GetRows($result2)) {
+                      echo ($row2[0]. " ". $row2[1]);
+                    }
+                  }else{
+                    echo "Error al ejecutar query";
+                  }
+                  echo "$row[0]";
                   ?>
+
+                  <!-- 
+
                     <li class="nav-item">
                       	<div class="dropdown">
 							<a class="btn nav-link dropdown-toggle" data-toggle="dropdown" enctype="multipart/form-data" style="color: white;" ><?php echo ($row[1]); ?></a>
@@ -71,7 +90,7 @@
   							</div>
 						</div>
                       
-                    </li>
+                    </li> -->
                   <?php
                 }
               }
