@@ -25,3 +25,8 @@ CREATE TABLE pagina(
 	content TEXT
 );
 
+create table archivos(
+	id_pagina int not null,
+	archivo varchar(150) not null
+);
+

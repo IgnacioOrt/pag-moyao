@@ -87,7 +87,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Agregar página</div>
                             <div class="card-body">
-                                <form method="post" action="agregarPagina.php">
+                                <form method="post" action="agregarPagina.php" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="Titulo" class="form-control-label">Titulo</label>
                                         <input id="Titulo" class="form-control" name="title" required>
@@ -108,6 +108,41 @@
                                         $base = new dbmysqli($hostname,$username,$password,$database);
                                         $insert = array("title" => $_POST['title'], "content" => $_POST['content']);
                                         $base ->insertar("pagina", $insert);
+										
+										$ti=$_POST['title'];
+										$con=$_POST['content'];
+										$link=mysqli_connect($hostname,$username,$password,$database);
+										$result=mysqli_query($link,"select id_pagina from pagina where title='$ti' and content='$con'" );
+										$row=mysqli_fetch_array($result);
+										$var=$row['id_pagina'];
+										
+										foreach($_FILES["miarchivo"]['tmp_name'] as $key => $tmp_name)
+ 										{
+ 											//condicional si el fuchero existe
+ 											if($_FILES["miarchivo"]["name"][$key]) {
+ 												// Nombres de archivos de temporales
+ 												$archivonombre = $_FILES["miarchivo"]["name"][$key]; 
+												$fuente = $_FILES["miarchivo"]["tmp_name"][$key]; 
+ 
+ 												$carpeta = 'archivos/'; //Declaramos el nombre de la carpeta que guardara los archivos
+ 
+ 												if(!file_exists($carpeta)){
+													mkdir($carpeta, 0777) or die("\nHubo un error al crear el directorio de almacenamiento"); 
+ 												}
+ 
+ 												$dir=opendir($carpeta);
+ 												$target_path = $carpeta.'/'.$archivonombre; //indicamos la ruta de destino de los archivos
+ 
+ 
+ 												if(move_uploaded_file($fuente, $target_path)) { 
+													mysqli_query($link,"insert into archivos values('$var','$target_path')");
+													echo "\nLos archivos $archivonombre se han cargado de forma correcta.<br>";
+ 												} else { 
+ 													echo "\nSe ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+ 												}
+ 													closedir($dir); //Cerramos la conexion con la carpeta destino
+ 												}
+ 										}
                                     }
                                 ?>
                             </div>
