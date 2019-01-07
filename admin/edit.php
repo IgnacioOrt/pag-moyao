@@ -11,14 +11,10 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/estilos.css">
-    
+    <link rel="stylesheet" href="css/estilos.css">
+	
 </head>
 <body class="sidebar-fixed header-fixed">
-	<?php session_start(); 
-	if(!isset($_SESSION['nom'])) header("Location: login.html");
-
-	?>
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -40,7 +36,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <!-- <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo"> -->
-                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2"><?php $var=$_SESSION['nom']; echo "$var";?></span>
+                    <span class=" btn btn-danger small ml-1 d-md-down-none texto2">Cuenta</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -50,7 +46,7 @@
                         <i class="fa fa-wrench"></i> Ajustes
                     </a>
 
-                    <a href="php/salir.php" class="dropdown-item" >
+                    <a href="#" class="dropdown-item" >
                         <i class="fa fa-lock"></i> Cerrar sesión
                     </a>
                 </div>
@@ -89,54 +85,84 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header bg-light">Páginas</div>
+                            <div class="card-header bg-light">Editar página</div>
                             <div class="card-body">
-                                <div class="mb-4">
-                                    <button class="btn btn-outline-secondary btn-sm"><a href="agregarPagina.php" style="color:black;">Agregar página</a></button>
-                                </div>
-                                <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <!-- <th>Fecha</th> -->
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    
+                                <form method="post" action="edit.php" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="Titulo" class="form-control-label">Titulo</label>
                                         <?php
                                             require_once 'config/config.php';
                                             require_once 'config/conexion.php';
                                             $base = new dbmysqli($hostname,$username,$password,$database);
-                                            $query="SELECT pagina.id_pagina, pagina.title FROM pagina";
-
+                                            $id_pagina = $_GET['id_pagina'];
+                                            $query = "SELECT pagina.title, pagina.content FROM pagina WHERE id_pagina = $id_pagina";
                                             $result = $base->ExecuteQuery($query);
-                                            if($result){
-                                                while ($row=$base->GetRows($result)){
-                                                    ?>
-                                                    <tr>
-                                                        <td class="text-nowrap"><a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank"><?php echo($row[1]) ?></a><br>
-                                                            <a href="edit.php?id_pagina=<?php echo($row[0])?>">Editar |</a>
-                                                            <!-- <a href="">Edición rapida |</a> -->
-                                                            <a href="delete.php?id_pagina=<?php echo($row[0])?>" onclick="return confirm('¿Esta seguro que desea eliminar?');">Eliminar |</a>
-                                                            <a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank">Vista previa</a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
+                                            if ($result) {
+                                                if ($row = $base->GetRows($result)) {
+                                                    $title = $row[0];
+                                                    $content = $row[1];
                                                 }
                                                 $base->SetFreeResult($result);
                                             }else{
-                                                echo "<h3>Error generando la consulta</h3>";
+                                                echo("Error al recuperar datos");
                                             }
-
+                                            
                                         ?>
-                                        <!-- <td>31,589</td> -->
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                        <input id="Titulo" class="form-control" name="title" value="<?php echo($title)?>" required>
+                                    </div>
+									<div class="form-group">
+          								<div class="col-sm-8">
+            								<input type="file" class="form-control" id="miarchivo[]" name="miarchivo[]" multiple="">
+          								</div>
+									</div>
+                                    <textarea id="mytextarea" name="content"> <?php echo($content) ?></textarea>
+                                    <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="<?php echo($id_pagina)?>">
+                                </form>
+
+                                <?php
+                                    if (isset($_POST['enviar'])) {
+										$ti=$_POST['title'];
+										$con=$_POST['content'];
+										$link=mysqli_connect($hostname,$username,$password,$database);
+										//$result=mysqli_query($link,"select id_pagina from pagina where title='$ti' and content='$con'" );
+										$result=mysqli_query($link,"select * from pagina order by id_pagina desc limit 1" );
+                                        //echo("select id_pagina from pagina where title='$ti' and content='$con'");
+										$row=mysqli_fetch_array($result);
+										$var=$row['id_pagina'];
+										
+										foreach($_FILES["miarchivo"]['tmp_name'] as $key => $tmp_name)
+ 										{
+ 											//condicional si el fuchero existe
+ 											if($_FILES["miarchivo"]["name"][$key]) {
+ 												// Nombres de archivos de temporales
+ 												$archivonombre = $_FILES["miarchivo"]["name"][$key]; 
+												$fuente = $_FILES["miarchivo"]["tmp_name"][$key]; 
+ 
+ 												$carpeta = 'archivos/'; //Declaramos el nombre de la carpeta que guardara los archivos
+ 
+ 												if(!file_exists($carpeta)){
+													mkdir($carpeta, 0777) or die("\nHubo un error al crear el directorio de almacenamiento"); 
+ 												}
+ 
+ 												$dir=opendir($carpeta);
+ 												$target_path = $carpeta.'/'.$archivonombre; //indicamos la ruta de destino de los archivos
+ 
+ 
+ 												if(move_uploaded_file($fuente, $target_path)) { 
+													mysqli_query($link,"insert into archivos values('$var','$target_path')");
+													echo "\nLos archivos $archivonombre se han cargado de forma correcta.<br>";
+ 												} else { 
+ 													echo "\nSe ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+ 												}
+ 													closedir($dir); //Cerramos la conexion con la carpeta destino
+ 												}
+ 										}
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
+					
                 </div>
             </div>
         </div>
@@ -148,5 +174,18 @@
 <script src="./vendor/chart.js/chart.min.js"></script>
 <script src="./js/carbon.js"></script>
 <script src="./js/demo.js"></script>
+<script src='tinymce/tinymce.min.js'></script>
+<script>
+   tinymce.init({
+    selector: '#mytextarea',
+    plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'save table contextmenu directionality emoticons template paste textcolor'
+    ],
+    content_css: 'css/content.css',
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+  });
+</script>
 </body>
 </html>
