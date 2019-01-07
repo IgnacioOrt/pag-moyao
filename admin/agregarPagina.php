@@ -112,8 +112,9 @@
 										$ti=$_POST['title'];
 										$con=$_POST['content'];
 										$link=mysqli_connect($hostname,$username,$password,$database);
-										$result=mysqli_query($link,"select id_pagina from pagina where title='$ti' and content='$con'" );
-                                        echo("select id_pagina from pagina where title='$ti' and content='$con'");
+										//$result=mysqli_query($link,"select id_pagina from pagina where title='$ti' and content='$con'" );
+										$result=mysqli_query($link,"select * from pagina order by id_pagina desc limit 1" );
+                                        //echo("select id_pagina from pagina where title='$ti' and content='$con'");
 										$row=mysqli_fetch_array($result);
 										$var=$row['id_pagina'];
 										
