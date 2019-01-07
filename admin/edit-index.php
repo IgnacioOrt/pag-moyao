@@ -124,7 +124,7 @@
  
  
  												if(move_uploaded_file($fuente, $target_path)) {
-													mysqli_query($link,"update sitio set picture='$target_path'");
+													
 													echo "\nEl archivo $archivonombre se ha cargado de forma correcta.<br>";
 													
 													
@@ -147,7 +147,8 @@
 													}
 													
 													$auxx="../admin/".$res2;
-													
+													$ac="admin/".$res2;
+													mysqli_query($link,"update sitio set picture='$ac'");
 													echo "<img src='$auxx' height='300' width='500'>";
  												} else { 
  													echo "\nSe ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";

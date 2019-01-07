@@ -72,7 +72,14 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <?php
+	  	$link=mysqli_connect($hostname,$username,$password,$database);
+	  	$result=mysqli_query($link,"select picture from sitio");
+	  	$row=mysqli_fetch_array($result);
+	  
+	  	$dir=$row['picture'];
+	  ?>
+    <header class="masthead" style="background-image: url('<?php echo $dir; ?>')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
