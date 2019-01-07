@@ -88,17 +88,79 @@
                 <div class="row">
                     <div class="col-md-12">
                         <?php
+                        require_once 'config/config.php';
+                        require_once 'config/conexion.php';
+                        $base = new dbmysqli($hostname,$username,$password,$database);
                         if (isset($_POST['enviar'])) {
-                            ?>
-                                        <div class="alert alert-dismissible alert-primary">
-                                            boton presionado
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                            function Error($msg)
+                            {
+                                ?>
+                                    <div class="alert alert-dismissible alert-danger">
+                                        <?php echo($msg) ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                              
-                            <?php
-                        }
+                                    <?php
+                                }
+                                $title = utf8_decode($_POST['title']);
+                                $description = $_POST['description'];
+                                $username = $_POST['username'];
+                                $pass1 = $_POST['password1'];
+                                $pass2 = $_POST['password2'];
+                                $errores = 0;
+                                //CAMBIOS A TITULO DEL SITIO
+                                $update = "UPDATE sitio SET title = '$title'";
+                                if ($base->ExecuteQuery($update)) {
+                                }else{
+                                    $errores++;
+                                    Error("Error al cambiar título");
+                                }
+                                //CAMBIOS A DESCRIPCION DEL SITIO
+                                $update = "UPDATE sitio SET description = '$description'";
+                                if ($base->ExecuteQuery($update)) {
+                                }else{
+                                    $errores++;
+                                    Error("Error al cambiar descripción");
+                                }
+                                //CAMBIO DE USUARIO
+                                $update = "UPDATE administrador SET username = '$username'";
+                                if ($base->ExecuteQuery($update)) {
+
+                                }else{
+                                    $errores++;
+                                    Error("Error al cambiar nombre de usuario");
+                                }
+                                //CAMBIO DE CONTRASEÑA
+                                if (strlen($pass1) != 0 && strlen($pass2)) {
+                                    if( strlen($pass1) >= 8 && strlen($pass2) >= 8){
+                                        if ($pass1 == $pass2) {
+                                            $update = "UPDATE administrador SET password = '$pass1'";
+                                            if ($base->ExecuteQuery($update)) {
+                                            }else{
+                                                $errores++;
+                                                Error("Error al cambiar la contraseña");
+                                            }
+                                        }else{
+                                            $errores++;
+                                            Error("Las contraseñas no coinciden");
+                                        }
+                                    }else{
+                                        $errores++;
+                                        Error("El tamaño de la contraseña debe ser mayor de 8 caracteres");
+                                    }
+                                }
+                                if ($errores == 0) {
+                                    ?>
+                                    <div class="alert alert-dismissible alert-success">
+                                        Información guardada correctamente
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <?php
+                                }
+                            }
                         ?>
                         <div class="card">
                             <div class="card-header bg-light">Ajustes</div>
@@ -106,9 +168,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <?php
-                                            require_once 'config/config.php';
-                                            require_once 'config/conexion.php';
-                                            $base = new dbmysqli($hostname,$username,$password,$database);
                                             $query="SELECT administrador.username, sitio.title, sitio.description FROM administrador,sitio;";
 
                                             $result = $base->ExecuteQuery($query);
@@ -174,37 +233,5 @@
 <script src="./vendor/chart.js/chart.min.js"></script>
 <script src="./js/carbon.js"></script>
 <script src="./js/demo.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var pulsa1 = 0, pulsa2 = 0;
-        //comprobamos si se pulsa una tecla
-        $("#pass1").keyup(function(e){
-            //obtenemos el texto introducido en el campo de búsqueda
-            /*consulta = $("#busqueda").val();*/
-            //hace la búsqueda
-            pulsa1++;
-            if (pulsa1 >= 6) {
-                if ($("#pass1").val() != $("#pass2").val()) {
-                    console.log("Las contraseñas no coinciden");
-                }else{
-                    console.log("contraseñas iguales");
-                }
-            }
-        });
-        $("#pass2").keyup(function(e){
-            //obtenemos el texto introducido en el campo de búsqueda
-            /*consulta = $("#busqueda").val();*/
-            //hace la búsqueda
-            pulsa2++;
-            if (pulsa2 >= 6) {
-                if ($("#pass1").val() != $("#pass2").val()) {
-                    console.log("Las contraseñas no coinciden");
-                }else{
-                    console.log("contraseñas iguales");
-                }
-            }
-        });
-    });
-</script>
 </body>
 </html>

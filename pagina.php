@@ -60,8 +60,7 @@
                 while ($row=$base->GetRows($result)) {
                   ?>
                     <li class="nav-item">
-
-                      <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row[0]) ?>" enctype="multipart/form-data"><?php echo ($row[1]); ?></a>
+                      <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
                     </li>
                   <?php
                 }
