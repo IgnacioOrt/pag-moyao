@@ -13,7 +13,8 @@ INSERT INTO administrador (username,password) VALUES ('admin','aecdee96e9359dbd8
 DROP TABLE IF EXISTS sitio;
 CREATE TABLE sitio(
 	title TEXT,
-	description TEXT
+	description TEXT,
+	picture varchar(150)
 );
 
 INSERT INTO sitio (title) VALUES ('M.C. Yolanda Moyao Martínez');
