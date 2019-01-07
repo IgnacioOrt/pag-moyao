@@ -65,10 +65,27 @@
               //$result3 = $base->ExecuteQuery($query3);
 
               if ($result) {
-
                 while ($row=$base->GetRows($result)) {
-                  $query2 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina INT (SELECT id_pagina FROM subpagina WHERE pagina_superior = $row[0])";
+                  $query2 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina = $row[0]";
+                  if ($res = $base->ExecuteQuery($query2)) {
+                    if ($fila = $base->GetRows($fila)) {
+                      ?>
+                        <li class="nav-item">
+                        <div class="dropdown">
+                          <a class="btn nav-link dropdown-toggle" data-toggle="dropdown" enctype="multipart/form-data" style="color: white;" ><?php echo ($row[1]); ?></a>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item"  href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                          </div>
+                        </div>
+                      </li>
+                      <?php
+                    }
+                  }
+                  //$query3 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina"
                   $result2 = $base->ExecuteQuery($query2);
+
                   if ($result2) {
                     while ($row2= $base->GetRows($result2)) {
                       echo ($row2[0]. " ". $row2[1]);
@@ -76,7 +93,6 @@
                   }else{
                     echo "Error al ejecutar query";
                   }
-                  echo "$row[0]";
                   ?>
 
                   <!-- 
