@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `administrador`
 --
+DROP DATABASE IF EXISTS master_moyao;
+CREATE DATABASE master_moyao;
+USE  master_moyao;
 
 CREATE TABLE `administrador` (
   `username` varchar(50) NOT NULL,
