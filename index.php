@@ -68,7 +68,7 @@
                 while ($row=$base->GetRows($result)) {
                   $query2 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina = $row[0]";
                   if ($res = $base->ExecuteQuery($query2)) {
-                    if ($fila = $base->GetRows($fila)) {
+                    if ($fila = $base->GetRows($res)) {
                       ?>
                         <li class="nav-item">
                         <div class="dropdown">
@@ -84,15 +84,15 @@
                     }
                   }
                   //$query3 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina"
-                  $result2 = $base->ExecuteQuery($query2);
+                  // $result2 = $base->ExecuteQuery($query2);
 
-                  if ($result2) {
-                    while ($row2= $base->GetRows($result2)) {
-                      echo ($row2[0]. " ". $row2[1]);
-                    }
-                  }else{
-                    echo "Error al ejecutar query";
-                  }
+                  // if ($result2) {
+                  //   while ($row2= $base->GetRows($result2)) {
+                  //     echo ($row2[0]. " ". $row2[1]);
+                  //   }
+                  // }else{
+                  //   echo "Error al ejecutar query";
+                  // }
                   ?>
 
                   <!-- 
