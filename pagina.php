@@ -111,6 +111,35 @@
             if (isset($content)) {
               echo($content);
             }
+			
+			$link=mysqli_connect($hostname,$username,$password,$database);
+			
+			$result=mysqli_query($link,"select archivo from archivos where id_pagina='$id_pagina'");
+			
+			if($row=mysqli_fetch_array($result)){
+				mysqli_data_seek($result,0);
+				while($row=mysqli_fetch_array($result)){
+					$enlaces=$row['archivo'];
+					
+					$cont=0;
+					$tam=strlen($enlaces);
+					for($i=0;$i<$tam;$i++){
+						if($enlaces[$i]=='/'){
+							$cont++;
+						}
+						
+						if($cont==2){
+							$res=substr($enlaces,$i+1,$tam-1);
+							//echo $res;
+							$res2=substr($enlaces,0,$i).$res;
+							//echo $res2;
+							break;
+						}
+					}
+					$rax="admin/".$res2;
+					echo "<a href='$rax' download='$res'>$res</a><br>";
+				}
+			}
           ?>
         </div>
       </div>
