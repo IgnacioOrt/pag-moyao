@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/estilos.css">
-	
+
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -40,7 +40,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    
+
                     <div class="dropdown-header">Ajustes</div>
                     <a href="#" class="dropdown-item">
                         <i class="fa fa-wrench"></i> Ajustes
@@ -87,7 +87,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Editar página</div>
                             <div class="card-body">
-                                <form method="post" action="verifEdit.php" enctype="multipart/form-data">
+                                <form method="post" action="verifEdit.php?id=<?php echo $_GET['id_pagina'] ?>" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="Titulo" class="form-control-label">Titulo</label>
                                         <?php
@@ -106,7 +106,7 @@
                                             }else{
                                                 echo("Error al recuperar datos");
                                             }
-                                            
+
                                         ?>
                                         <input id="Titulo" class="form-control" name="title" value="<?php echo($title)?>" required>
                                     </div>
@@ -121,20 +121,20 @@
 									<?php
 										$link=mysqli_connect($hostname,$username,$password,$database);
 										$result=mysqli_query($link,"select archivo from archivos where id_pagina='$id_pagina'");
-										
+
 										if($row=mysqli_fetch_array($result)){
 											mysqli_data_seek($result,0);
-											
+
 											while($row=mysqli_fetch_array($result)){
 												$enlaces=$row['archivo'];
-					
+
 												$cont=0;
 												$tam=strlen($enlaces);
 												for($i=0;$i<$tam;$i++){
 													if($enlaces[$i]=='/'){
 														$cont++;
 													}
-						
+
 													if($cont==2){
 														$res=substr($enlaces,$i+1,$tam-1);
 														//echo $res;
@@ -143,7 +143,7 @@
 														break;
 													}
 												}
-												
+
 												echo "<div class='row py-2'>
 														<div class='col-md-6'>
 															<span>$res</span>
@@ -154,27 +154,27 @@
 														</div>
 														</form>
 													</div>
-												
+
 												";
-												
-												
-												
-												
+
+
+
+
 											}
-											
+
 											if(isset($_REQUEST['del'])){
 												$id=$_REQUEST['id_pagina'];
 												$enlace=$_REQUEST['arch'];
-												
+
 												mysqli_query($link,"delete from archivos where id_pagina='$id' and archivo='$enlace'");
 												echo "<META HTTP-EQUIV='refresh' CONTENT='0'>";
 											}
 										}
 									?>
-                                    
+
 
                                 <?php
-                                    if (isset($_POST['enviar'])) {
+                                    /*if (isset($_POST['enviar'])) {
                                         $id_pagina = $_POST['enviar'];
 										$ti=$_POST['title'];
 										$con=$_POST['content'];
@@ -184,40 +184,40 @@
                                         //echo("select id_pagina from pagina where title='$ti' and content='$con'");
 										$row=mysqli_fetch_array($result);
 										$var=$row['id_pagina'];
-										
+
 										foreach($_FILES["miarchivo"]['tmp_name'] as $key => $tmp_name)
  										{
  											//condicional si el fuchero existe
  											if($_FILES["miarchivo"]["name"][$key]) {
  												// Nombres de archivos de temporales
- 												$archivonombre = $_FILES["miarchivo"]["name"][$key]; 
-												$fuente = $_FILES["miarchivo"]["tmp_name"][$key]; 
- 
+ 												$archivonombre = $_FILES["miarchivo"]["name"][$key];
+												$fuente = $_FILES["miarchivo"]["tmp_name"][$key];
+
  												$carpeta = 'archivos/'; //Declaramos el nombre de la carpeta que guardara los archivos
- 
+
  												if(!file_exists($carpeta)){
-													mkdir($carpeta, 0777) or die("\nHubo un error al crear el directorio de almacenamiento"); 
+													mkdir($carpeta, 0777) or die("\nHubo un error al crear el directorio de almacenamiento");
  												}
- 
+
  												$dir=opendir($carpeta);
  												$target_path = $carpeta.'/'.$archivonombre; //indicamos la ruta de destino de los archivos
- 
- 
- 												if(move_uploaded_file($fuente, $target_path)) { 
+
+
+ 												if(move_uploaded_file($fuente, $target_path)) {
 													mysqli_query($link,"insert into archivos values('$var','$target_path')");
 													echo "\nLos archivos $archivonombre se han cargado de forma correcta.<br>";
- 												} else { 
+ 												} else {
  													echo "\nSe ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
  												}
  													closedir($dir); //Cerramos la conexion con la carpeta destino
  												}
  										}
                                     }
-                                ?>
+                                */?>
                             </div>
                         </div>
                     </div>
-					
+
                 </div>
             </div>
         </div>
