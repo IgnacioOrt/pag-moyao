@@ -111,6 +111,31 @@
         </div>
       </div>
     </div>
+	  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contacto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span><h5 style="font-weight:bolder">E-Mail</h5></span>
+		  <a href="mailto:ymoyao@cs.buap.mx">ymoyao@cs.buap.mx</a>
+		  <br>
+		  <span><br><h5 style="font-weight:bolder">Cubículo</h5><br></span>
+		  <span><h5 style="font-weight:bolder">Dirección</h5><p>Av. San Claudio y 14 sur. Col. San Manuel. C.P. 72570. Puebla, Pue., México</p></span>
+		  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
     <hr>
 
@@ -122,7 +147,7 @@
             <ul class="list-inline text-center">
               <li class="list-inline-item">
                 <a href="#">
-                  <span class="btn btn-dark" style="color:white">Contacto</span>
+                  <span class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" style="color:white">Contacto</span>
                 </a>
               </li>
               
