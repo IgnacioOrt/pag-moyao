@@ -87,7 +87,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Editar página</div>
                             <div class="card-body">
-                                <form method="post" action="edit.php" enctype="multipart/form-data">
+                                <form method="post" action="verifEdit.php" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="Titulo" class="form-control-label">Titulo</label>
                                         <?php
@@ -116,11 +116,12 @@
           								</div>
 									</div>
                                     <textarea id="mytextarea" name="content"> <?php echo($content) ?></textarea>
-                                    <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="<?php echo($id_pagina)?>">
+                                    <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios">
                                 </form>
 
                                 <?php
                                     if (isset($_POST['enviar'])) {
+                                        $id_pagina = $_POST['enviar'];
 										$ti=$_POST['title'];
 										$con=$_POST['content'];
 										$link=mysqli_connect($hostname,$username,$password,$database);
