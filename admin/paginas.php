@@ -91,7 +91,7 @@
                         <div class="card">
                             <div class="card-header bg-light">Páginas</div>
                             <div class="card-body">
-                                <button class="btn btn-outline-secondary btn-sm"><a href="agregarPagina" style="color:black;">Agregar página</a></button>
+                                <button class="btn btn-outline-secondary btn-sm"><a href="agregarPagina.php" style="color:black;">Agregar página</a></button>
                                 
 
                                 <div class="table-responsive">
