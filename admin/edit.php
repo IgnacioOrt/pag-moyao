@@ -116,8 +116,62 @@
           								</div>
 									</div>
                                     <textarea id="mytextarea" name="content"> <?php echo($content) ?></textarea>
-                                    <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios">
+									<input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios"><br>
                                 </form>
+									<?php
+										$link=mysqli_connect($hostname,$username,$password,$database);
+										$result=mysqli_query($link,"select archivo from archivos where id_pagina='$id_pagina'");
+										
+										if($row=mysqli_fetch_array($result)){
+											mysqli_data_seek($result,0);
+											
+											while($row=mysqli_fetch_array($result)){
+												$enlaces=$row['archivo'];
+					
+												$cont=0;
+												$tam=strlen($enlaces);
+												for($i=0;$i<$tam;$i++){
+													if($enlaces[$i]=='/'){
+														$cont++;
+													}
+						
+													if($cont==2){
+														$res=substr($enlaces,$i+1,$tam-1);
+														//echo $res;
+														$res2=substr($enlaces,0,$i).$res;
+														//echo $res2;
+														break;
+													}
+												}
+												
+												echo "<div class='row py-2'>
+														<div class='col-md-6'>
+															<span>$res</span>
+														</div>
+														<div class='col-md-6'>
+														<form method='post' action='edit.php?id_pagina=$id_pagina&arch=$enlaces' enctype='multipart/form-data'>
+															<button type='submit' name='del' class='btn btn-danger'>¿Eliminar?</button>
+														</div>
+														</form>
+													</div>
+												
+												";
+												
+												
+												
+												
+											}
+											
+											if(isset($_REQUEST['del'])){
+												$id=$_REQUEST['id_pagina'];
+												$enlace=$_REQUEST['arch'];
+												
+												mysqli_query($link,"delete from archivos where id_pagina='$id' and archivo='$enlace'");
+												echo "<META HTTP-EQUIV='refresh' CONTENT='0'>";
+											}
+										}
+									?>
+                                    
 
                                 <?php
                                     if (isset($_POST['enviar'])) {
