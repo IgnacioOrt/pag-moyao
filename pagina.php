@@ -136,7 +136,7 @@
 						}
 					}
 					$rax="admin/".$res2;
-					echo "<a href='$rax' download='$res'>$res</a><br>";
+					echo "<a  style='color:blue;' href='$rax' download='$res'>$res</a><br>";
 				}
 			}
           ?>
