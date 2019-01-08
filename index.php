@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b0fdbb830e1db4d3560b0f790ff661a2f24e93f
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -35,8 +37,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-	
-
+    <link href="css/style.css" rel="stylesheet" >
   </head>
 
   <body>
@@ -51,32 +52,71 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item py-2">
+            <li class="nav-item ">
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
-              //$query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
               $query2 = "SELECT subpagina.id_pagina,pagina.title FROM  subpagina";
+<<<<<<< HEAD
               $query = "SELECT pagina_superior FROM subpagina";
               $query = "SELECT pagina.id_pagina,pagina.title FROM  pagina";
+=======
+              $query = "SELECT DISTINCT pagina_superior FROM subpagina ";
+
+>>>>>>> 4b0fdbb830e1db4d3560b0f790ff661a2f24e93f
               $result = $base->ExecuteQuery($query);
               
               //$result3 = $base->ExecuteQuery($query3);
 
               if ($result) {
-
                 while ($row=$base->GetRows($result)) {
-                  $query2 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina INT (SELECT id_pagina FROM subpagina WHERE pagina_superior = $row[0])";
-                  $result2 = $base->ExecuteQuery($query2);
-                  if ($result2) {
-                    while ($row2= $base->GetRows($result2)) {
-                      echo ($row2[0]. " ". $row2[1]);
+                  $query2 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina = $row[0]";
+                  if ($res = $base->ExecuteQuery($query2)) {
+                    if ($fila = $base->GetRows($res)) {
+                      ?>
+                        <li class="nav-item dropdown">
+                          <!-- pagina.php?id_pagina=<?php echo($row[0]) ?> -->
+                          <a class="nav-link dropdown-toggle show"  href="pagina.php?id_pagina=<?php echo ($fila[0]); ?>" data-toggle="dropdown" id="navbarDropdown" data-target="#my-target"><?php echo ($fila[1]); ?></a>
+                          <div class="dropdown">
+                            <div class="dropdown-menu">
+                              <?php
+                                $select = "SELECT id_pagina FROM subpagina WHERE subpagina.pagina_superior = $fila[0]";
+                                $res2 = $base->ExecuteQuery($select);
+                                if ($res2) {
+                                  while ($subpaginas = $base->GetRows($res2)) {
+                                    $nuevo_select = "SELECT id_pagina,title FROM pagina WHERE id_pagina = $subpaginas[0]";
+                                    $res3 = $base->ExecuteQuery($nuevo_select);
+                                    if ($res3) {
+                                      while ($pags = $base->GetRows($res3)) {
+                                        ?>
+                                      <a class="dropdown-item" href="pagina.php?id_pagina=<?php echo($pags[0]) ?>"><?php echo ($pags[1]); ?></a>
+                                    <?php
+                                      }
+                                    }else{
+                                      echo "Error al conectar";
+                                    }
+                                  }
+                                  $base->SetFreeResult($res2);
+                                }else{
+                                  echo "Error al seleccionar";
+                                }
+                              ?>
+                            </div>
+                          </div>
+                      </li>
+                      <?php
                     }
-                  }else{
-                    echo "Error al ejecutar query";
+                    $base->SetFreeResult($res);
                   }
-                  echo "$row[0]";
+                }
+                $base->SetFreeResult($result);
+              }
+              $query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina) AND id_pagina NOT IN (SELECT pagina_superior FROM subpagina)";
+              $result2 = $base->ExecuteQuery($query);
+              if ($result2) {
+                while ($row2= $base->GetRows($result2)) {
                   ?>
+<<<<<<< HEAD
 
                   
 
@@ -90,11 +130,17 @@
   							</div>
 						</div>
                       
+=======
+                    <li class="nav-item">
+                      <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row2[0]); ?>"><?php echo ($row2[1]); ?></a>
+>>>>>>> 4b0fdbb830e1db4d3560b0f790ff661a2f24e93f
                     </li>
                   <?php
                 }
+              }else{
+                echo "Error al ejecutar query";
               }
-            ?>
+              ?>
           </ul>
         </div>
       </div>
@@ -200,7 +246,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/clean-blog.min.js"></script>
-
+    <script type="text/javascript">
+      $('.dropdown-toggle').click(function() { var location = $(this).attr('href'); window.location.href = location; return false; });
+    </script>
   </body>
 
 </html>

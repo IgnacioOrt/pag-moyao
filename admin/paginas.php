@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin</title>
+    <title>Paginas</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -25,10 +25,10 @@
             <i class="fa fa-bars"></i>
         </a>
 
-        <a href="../" class="btn btn-secondary" target="_blank" >
+        <a href="../index.php" class="btn btn-secondary" target="_blank" >
             <i class="icon icon-home"> <span class="texto2">Visitar sitio</span></i>
         </a>
-        <a href="../" class="btn btn-secondary" target="_blank">
+        <a href="agregarPagina.php" class="btn btn-secondary" target="_blank">
             <i class="icon icon-plus"><span class="texto2"> Añadir</span> </i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -46,7 +46,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     
                     <div class="dropdown-header">Ajustes</div>
-                    <a href="#" class="dropdown-item">
+                   <a href="ajustes.php" class="dropdown-item">
                         <i class="fa fa-wrench"></i> Ajustes
                     </a>
 

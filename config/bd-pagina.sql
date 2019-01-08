@@ -44,3 +44,17 @@ SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM
 INSERT INTO subpagina (id_pagina,pagina_superior) VALUES (3,6);
 
 DELETE FROM subpagina WHERE id_pagina = 3;
+
+SELECT id_pagina FROM subpagina WHERE pagina_superior = 2;
+SELECT pagina.title FROM pagina,subpagina WHERE pagina.id_pagina = subpagina.id_pagina;
+
+
+/*NO SIRVE, SOLO REGRESA UN DATO
+SELECT pagina.title FROM pagina,subpagina WHERE pagina.id_pagina = (SELECT id_pagina FROM subpagina WHERE pagina_superior = 2);*/
+
+SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina) AND id_pagina NOT IN (SELECT pagina_superior FROM subpagina);
+
+SELECT pagina.title FROM pagina WHERE pagina.id_pagina = (SELECT id_pagina FROM subpagina WHERE pagina_superior = 7);
+
+SELECT id_pagina FROM subpagina WHERE subpagina.pagina_superior = 8;
+SELECT id_pagina,title FROM pagina WHERE id_pagina = 9;

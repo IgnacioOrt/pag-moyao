@@ -17,4 +17,6 @@
     }else{
         echo("error al eliminar");
     }
+
+	//header("Location:paginas.php");
 ?>
