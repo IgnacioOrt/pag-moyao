@@ -227,27 +227,3 @@
   </body>
 
 </html>
-                  <span class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" style="color:white">Contacto</span>
-                </a>
-              </li>
-              
-            </ul>
-			  <span style="font-size:0.8em;font-weight: lighter;font-style: italic;"><br>M.C. Yolanda Moyao Martínez</span>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
-    <script type="text/javascript">
-      $('.dropdown-toggle').click(function() { var location = $(this).attr('href'); window.location.href = location; return false; });
-    </script>
-  </body>
-
-</html>
