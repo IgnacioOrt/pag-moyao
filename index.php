@@ -36,8 +36,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-	
-
+    <link href="css/style.css" rel="stylesheet" >
   </head>
 
   <body>
@@ -52,7 +51,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item py-2">
+            <li class="nav-item ">
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
@@ -70,15 +69,16 @@
                   if ($res = $base->ExecuteQuery($query2)) {
                     if ($fila = $base->GetRows($res)) {
                       ?>
-                        <li class="nav-item">
-                        <div class="dropdown">
-                          <a class="btn nav-link dropdown-toggle" data-toggle="dropdown" enctype="multipart/form-data" style="color: white;" ><?php echo ($row[1]); ?></a>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item"  href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
+                        <li class="nav-item dropdown">
+                          <!-- pagina.php?id_pagina=<?php echo($row[0]) ?> -->
+                          <a class="nav-link dropdown-toggle show"  href="pagina?id_pagina=<?php echo ($fila[0]); ?>" data-toggle="dropdown" id="navbarDropdown" data-target="#my-target"><?php echo ($fila[1]); ?></a>
+                          <div class="dropdown">
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
+                              <a class="dropdown-item" href="#">Link 2</a>
+                              <a class="dropdown-item" href="#">Link 3</a>
+                            </div>
                           </div>
-                        </div>
                       </li>
                       <?php
                     }
@@ -217,7 +217,9 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/clean-blog.min.js"></script>
-
+    <script type="text/javascript">
+      $('.dropdown-toggle').click(function() { var location = $(this).attr('href'); window.location.href = location; return false; });
+    </script>
   </body>
 
 </html>
