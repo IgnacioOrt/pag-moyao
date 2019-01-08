@@ -41,6 +41,7 @@
   <body>
 
     <!-- Navigation -->
+	  
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="index.php">Inicio</a>
@@ -49,7 +50,8 @@
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
+          
+			<ul class="navbar-nav ml-auto">
             <li class="nav-item py-2">
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
@@ -75,10 +77,12 @@
               }
             ?>
           </ul>
+			
+			
         </div>
       </div>
     </nav>
-
+	  
     <!-- Page Header -->
     <?php
 	  	$link=mysqli_connect($hostname,$username,$password,$database);
