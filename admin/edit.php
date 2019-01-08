@@ -21,10 +21,10 @@
             <i class="fa fa-bars"></i>
         </a>
 
-        <a href="../" class="btn btn-secondary" target="_blank" >
+       <a href="../index.php" class="btn btn-secondary" target="_blank" >
             <i class="icon icon-home"> <span class="texto2">Visitar sitio</span></i>
         </a>
-        <a href="../" class="btn btn-secondary" target="_blank">
+        <a href="agregarPagina.php" class="btn btn-secondary" target="_blank">
             <i class="icon icon-plus"><span class="texto2"> Añadir</span> </i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -42,7 +42,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
 
                     <div class="dropdown-header">Ajustes</div>
-                    <a href="#" class="dropdown-item">
+                   <a href="ajustes.php" class="dropdown-item">
                         <i class="fa fa-wrench"></i> Ajustes
                     </a>
 
