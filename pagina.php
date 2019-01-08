@@ -53,9 +53,6 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
           
-			<ul class="navbar-nav ml-auto">
-            <li class="nav-item py-2">
-
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
 
