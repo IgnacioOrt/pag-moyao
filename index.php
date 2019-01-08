@@ -95,11 +95,15 @@
                 }
                 $base->SetFreeResult($result);
               }
-              $query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina,pagina_superior FROM subpagina)";
-              $result2 = $base->ExecuteQuery($query2);
+              $query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina) AND id_pagina NOT IN (SELECT pagina_superior FROM subpagina)";
+              $result2 = $base->ExecuteQuery($query);
               if ($result2) {
                 while ($row2= $base->GetRows($result2)) {
-                  echo ($row2[0]. " ". $row2[1]);
+                  ?>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row2[0]); ?>"><?php echo ($row2[1]); ?></a>
+                    </li>
+                  <?php
                 }
               }else{
                 echo "Error al ejecutar query";

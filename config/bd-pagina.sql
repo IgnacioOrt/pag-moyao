@@ -50,4 +50,6 @@ SELECT pagina.title FROM pagina,subpagina WHERE pagina.id_pagina = subpagina.id_
 
 SELECT pagina.title FROM pagina,subpagina WHERE pagina.id_pagina = (SELECT id_pagina FROM subpagina WHERE pagina_superior = 2);
 
+SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina) AND id_pagina NOT IN (SELECT pagina_superior FROM subpagina);
+
 SELECT pagina.title FROM pagina WHERE pagina.id_pagina = (SELECT id_pagina FROM subpagina WHERE pagina_superior = 7);
