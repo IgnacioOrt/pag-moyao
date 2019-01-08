@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<<<<<<< HEAD
-
-=======
->>>>>>> 4b0fdbb830e1db4d3560b0f790ff661a2f24e93f
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,13 +53,8 @@
             </li>
             <?php
               $query2 = "SELECT subpagina.id_pagina,pagina.title FROM  subpagina";
-<<<<<<< HEAD
-              $query = "SELECT pagina_superior FROM subpagina";
-              $query = "SELECT pagina.id_pagina,pagina.title FROM  pagina";
-=======
               $query = "SELECT DISTINCT pagina_superior FROM subpagina ";
 
->>>>>>> 4b0fdbb830e1db4d3560b0f790ff661a2f24e93f
               $result = $base->ExecuteQuery($query);
               
               //$result3 = $base->ExecuteQuery($query3);
@@ -116,24 +107,8 @@
               if ($result2) {
                 while ($row2= $base->GetRows($result2)) {
                   ?>
-<<<<<<< HEAD
-
-                  
-
-                    <li class="nav-item">
-                      	<div class="dropdown">
-							<a class="btn nav-link dropdown-toggle" data-toggle="dropdown" enctype="multipart/form-data" style="color: white;" ><?php echo ($row[1]); ?></a>
-							<div class="dropdown-menu">
-    							<a class="dropdown-item"  href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
-    							<a class="dropdown-item" href="#">Link 2</a>
-    							<a class="dropdown-item" href="#">Link 3</a>
-  							</div>
-						</div>
-                      
-=======
                     <li class="nav-item">
                       <a class="nav-link" href="pagina.php?id_pagina=<?php echo($row2[0]); ?>"><?php echo ($row2[1]); ?></a>
->>>>>>> 4b0fdbb830e1db4d3560b0f790ff661a2f24e93f
                     </li>
                   <?php
                 }
@@ -147,13 +122,13 @@
     </nav>
 
     <!-- Page Header -->
-	 <?php
-	  	$link=mysqli_connect($hostname,$username,$password,$database);
-	  	$result=mysqli_query($link,"select picture from sitio");
-	  	$row=mysqli_fetch_array($result);
-	  
-	  	$dir=$row['picture'];
-	  ?>
+   <?php
+      $link=mysqli_connect($hostname,$username,$password,$database);
+      $result=mysqli_query($link,"select picture from sitio");
+      $row=mysqli_fetch_array($result);
+    
+      $dir=$row['picture'];
+    ?>
     <header class="masthead" style="background-image: url('<?php echo $dir; ?>')">
       <div class="overlay"></div>
       <div class="container">
@@ -192,7 +167,7 @@
         </div>
       </div>
     </div>
-	  <!-- Modal -->
+    <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -204,11 +179,11 @@
       </div>
       <div class="modal-body">
         <span><h5 style="font-weight:bolder">E-Mail</h5></span>
-		  <a href="mailto:ymoyao@cs.buap.mx">ymoyao@cs.buap.mx</a>
-		  <br>
-		  <span><br><h5 style="font-weight:bolder">Cubículo</h5><br></span>
-		  <span><h5 style="font-weight:bolder">Dirección</h5><p>Av. San Claudio y 14 sur. Col. San Manuel. C.P. 72570. Puebla, Pue., México</p></span>
-		  
+      <a href="mailto:ymoyao@cs.buap.mx">ymoyao@cs.buap.mx</a>
+      <br>
+      <span><br><h5 style="font-weight:bolder">Cubículo</h5><br></span>
+      <span><h5 style="font-weight:bolder">Dirección</h5><p>Av. San Claudio y 14 sur. Col. San Manuel. C.P. 72570. Puebla, Pue., México</p></span>
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -228,6 +203,30 @@
             <ul class="list-inline text-center">
               <li class="list-inline-item">
                 <a href="#">
+                  <span class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" style="color:white">Contacto</span>
+                </a>
+              </li>
+              
+            </ul>
+        <span style="font-size:0.8em;font-weight: lighter;font-style: italic;"><br>M.C. Yolanda Moyao Martínez</span>
+            <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+    <script type="text/javascript">
+      $('.dropdown-toggle').click(function() { var location = $(this).attr('href'); window.location.href = location; return false; });
+    </script>
+  </body>
+
+</html>
                   <span class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" style="color:white">Contacto</span>
                 </a>
               </li>
