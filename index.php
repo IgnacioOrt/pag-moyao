@@ -55,7 +55,6 @@
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
-              //$query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
               $query2 = "SELECT subpagina.id_pagina,pagina.title FROM  subpagina";
               $query = "SELECT DISTINCT pagina_superior FROM subpagina ";
 
@@ -74,44 +73,38 @@
                           <a class="nav-link dropdown-toggle show"  href="pagina?id_pagina=<?php echo ($fila[0]); ?>" data-toggle="dropdown" id="navbarDropdown" data-target="#my-target"><?php echo ($fila[1]); ?></a>
                           <div class="dropdown">
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
-                              <a class="dropdown-item" href="#">Link 2</a>
-                              <a class="dropdown-item" href="#">Link 3</a>
+                              <?php
+                                $select = "SELECT pagina.id_pagina,pagina.title FROM pagina WHERE pagina.id_pagina = (SELECT id_pagina FROM subpagina WHERE pagina_superior = $row[0])";
+                                $res2 = $base->ExecuteQuery($select);
+                                if ($res2) {
+                                  while ($subpaginas = $base->GetRows($res2)) {
+                                    ?>
+                                      <a class="dropdown-item" href="pagina.php?id_pagina=<?php echo($subpaginas[0]) ?>"><?php echo ($subpaginas[1]); ?></a>
+                                    <?php
+                                  }
+                                  $base->SetFreeResult($res2);
+                                }
+                              ?>
                             </div>
                           </div>
                       </li>
                       <?php
                     }
+                    $base->SetFreeResult($res);
                   }
-                  //$query3 = "SELECT pagina.id_pagina, pagina.title FROM pagina WHERE id_pagina"
-                  // $result2 = $base->ExecuteQuery($query2);
-
-                  // if ($result2) {
-                  //   while ($row2= $base->GetRows($result2)) {
-                  //     echo ($row2[0]. " ". $row2[1]);
-                  //   }
-                  // }else{
-                  //   echo "Error al ejecutar query";
-                  // }
-                  ?>
-
-                  <!-- 
-
-                    <li class="nav-item">
-                      	<div class="dropdown">
-							<a class="btn nav-link dropdown-toggle" data-toggle="dropdown" enctype="multipart/form-data" style="color: white;" ><?php echo ($row[1]); ?></a>
-							<div class="dropdown-menu">
-    							<a class="dropdown-item"  href="pagina.php?id_pagina=<?php echo($row[0]) ?>"><?php echo ($row[1]); ?></a>
-    							<a class="dropdown-item" href="#">Link 2</a>
-    							<a class="dropdown-item" href="#">Link 3</a>
-  							</div>
-						</div>
-                      
-                    </li> -->
-                  <?php
                 }
+                $base->SetFreeResult($result);
               }
-            ?>
+              $query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina,pagina_superior FROM subpagina)";
+              $result2 = $base->ExecuteQuery($query2);
+              if ($result2) {
+                while ($row2= $base->GetRows($result2)) {
+                  echo ($row2[0]. " ". $row2[1]);
+                }
+              }else{
+                echo "Error al ejecutar query";
+              }
+              ?>
           </ul>
         </div>
       </div>
