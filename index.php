@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
   <head>
 
@@ -58,7 +58,7 @@
               //$query="SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
               $query2 = "SELECT subpagina.id_pagina,pagina.title FROM  subpagina";
               $query = "SELECT pagina_superior FROM subpagina";
-
+              $query = "SELECT pagina.id_pagina,pagina.title FROM  pagina";
               $result = $base->ExecuteQuery($query);
               
               //$result3 = $base->ExecuteQuery($query3);
@@ -78,7 +78,7 @@
                   echo "$row[0]";
                   ?>
 
-                  <!-- 
+                  
 
                     <li class="nav-item">
                       	<div class="dropdown">
@@ -90,7 +90,7 @@
   							</div>
 						</div>
                       
-                    </li> -->
+                    </li>
                   <?php
                 }
               }
