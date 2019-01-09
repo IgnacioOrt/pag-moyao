@@ -163,7 +163,16 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          
+          <?php
+				$result=mysqli_query($link,"select content from sitio");
+				if($result){
+					if($row=mysqli_fetch_array($result)){
+						$text=$row['content'];
+						echo $text;
+					}
+				}
+				
+			?>
         </div>
       </div>
     </div>
