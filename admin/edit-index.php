@@ -93,6 +93,10 @@
             								<input type="file" class="form-control" name="ima" accept="image/jpeg, image/png">
           								</div>
 									</div>
+									
+									<div class="form-group">
+										 <textarea id="mytextarea" name="content"></textarea>
+									</div>
                                    
                                     <input type="submit" name="enviar" class="btn btn-outline-primary px-5" value="Guardar cambios">
                                 </form>
@@ -101,10 +105,10 @@
                                     if (isset($_POST['enviar'])) {
                                         require_once 'config/config.php';
                                         require_once 'config/conexion.php';
-                                       
+                                       $texto2=$_REQUEST['content'];
 										$link=mysqli_connect($hostname,$username,$password,$database);
-										
-										
+										mysqli_query($link,"update sitio set content='$texto2'");
+										echo "Mensaje Guardado";
 										
  											//condicional si el fuchero existe
  											if($_FILES["ima"]["name"]) {

@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS sitio;
 CREATE TABLE sitio(
 	title TEXT,
 	description TEXT,
+	content TEXT,
 	picture varchar(150)
 );
 
