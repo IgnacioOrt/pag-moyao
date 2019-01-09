@@ -122,13 +122,13 @@
     </nav>
 
     <!-- Page Header -->
-	 <?php
-	  	$link=mysqli_connect($hostname,$username,$password,$database);
-	  	$result=mysqli_query($link,"select picture from sitio");
-	  	$row=mysqli_fetch_array($result);
-	  
-	  	$dir=$row['picture'];
-	  ?>
+   <?php
+      $link=mysqli_connect($hostname,$username,$password,$database);
+      $result=mysqli_query($link,"select picture from sitio");
+      $row=mysqli_fetch_array($result);
+    
+      $dir=$row['picture'];
+    ?>
     <header class="masthead" style="background-image: url('<?php echo $dir; ?>')">
       <div class="overlay"></div>
       <div class="container">
@@ -167,7 +167,7 @@
         </div>
       </div>
     </div>
-	  <!-- Modal -->
+    <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -179,11 +179,11 @@
       </div>
       <div class="modal-body">
         <span><h5 style="font-weight:bolder">E-Mail</h5></span>
-		  <a href="mailto:ymoyao@cs.buap.mx">ymoyao@cs.buap.mx</a>
-		  <br>
-		  <span><br><h5 style="font-weight:bolder">Cubículo</h5><br></span>
-		  <span><h5 style="font-weight:bolder">Dirección</h5><p>Av. San Claudio y 14 sur. Col. San Manuel. C.P. 72570. Puebla, Pue., México</p></span>
-		  
+      <a href="mailto:ymoyao@cs.buap.mx">ymoyao@cs.buap.mx</a>
+      <br>
+      <span><br><h5 style="font-weight:bolder">Cubículo</h5><br></span>
+      <span><h5 style="font-weight:bolder">Dirección</h5><p>Av. San Claudio y 14 sur. Col. San Manuel. C.P. 72570. Puebla, Pue., México</p></span>
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -208,7 +208,7 @@
               </li>
               
             </ul>
-			  <span style="font-size:0.8em;font-weight: lighter;font-style: italic;"><br>M.C. Yolanda Moyao Martínez</span>
+        <span style="font-size:0.8em;font-weight: lighter;font-style: italic;"><br>M.C. Yolanda Moyao Martínez</span>
             <p class="copyright text-muted">Copyright &copy; Your Website 2018</p>
           </div>
         </div>
