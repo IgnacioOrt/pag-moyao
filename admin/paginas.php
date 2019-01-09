@@ -116,6 +116,7 @@
                                                 while ($row=$base->GetRows($result)){
                                                     ?>
                                                     <tr>
+                                                        <!-- LISTA DE PAGINAS AGREGADAS-->
                                                         <td class="text-nowrap"><a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank"><?php echo($row[1]) ?></a><br>
                                                             <a href="edit.php?id_pagina=<?php echo($row[0])?>">Editar |</a>
                                                             <!-- <a href="">Edición rapida |</a> -->
@@ -123,6 +124,7 @@
                                                             <a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank">Vista previa</a>
                                                         </td>
                                                         <td>
+                                                            <!-- LISTA DE SELECTORES -->
                                                             <form class="form-inline" method="POST" action="#">
                                                                 <div class="form-group">
                                                                     <label for="select">Superior  </label>
@@ -132,16 +134,27 @@
                                                                             $result2 = $base->ExecuteQuery($query2);
                                                                             if ($result2) {
                                                                                 $query3 = "SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
-                                                                                $result3 = $base->ExecuteQuery($query3);
+                                                                                //echo "<script>console.log('$query3');</script>";
+                                                                                //echo "<script>console.log('$row[0]');</script>";
+                                                                                
                                                                                 while ($row2=$base->GetRows($result2)) {
-                                                                                    
+                                                                                    $result3 = $base->ExecuteQuery($query3);
                                                                                     if ($result3) {
-
                                                                                         if ($sql = $base->GetRows($result3)) {
+                                            //$ROW SELECT pagina.id_pagina, pagina.title FROM pagina
+                                            //$ROW2 SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina
+                                            //$ SQL SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]
+                                                                                            echo "<script>console.log('$sql[0]'+ ' es seleccionado' + ' $row2[0]' + $row[0]);</script>";
                                                                                             if ($row[0] != $row2[0]) {
-                                                                                                ?>
+                                                                                                //echo "<script>console.log('$row2[0]'+ 'es seleccionado');</script>";
+                                                                                                $ultimo = "SELECT pagina.id_pagina,pagina.title FROM subpagina WHERE id_pagina = $sql[0]";
+                                                                                                if ($ks = $base->ExecuteQuery($ultimo)){
+                                                                                                    if ($f = $base->GetRows($ks)) {
+                                                                                                        ?>
                                                                                                 <option value="<?php echo($row2[0])?>" selected><?php echo($row2[1]) ?></option>
                                                                                                 <?php
+                                                                                                    }
+                                                                                                }
                                                                                             }
                                                                                         }else{
                                                                                             if ($row[0] != $row2[0]) {

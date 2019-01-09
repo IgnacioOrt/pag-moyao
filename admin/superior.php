@@ -26,7 +26,8 @@
         	$res = $base->ExecuteQuery($query);
         	if ($res) {
         		if ($row = $base->GetRows($res)) {
-        			$update = "UPDATE subpagina SET pagina_superior = $superior WHERE id_pagina = inferior";
+        			$update = "UPDATE subpagina SET pagina_superior = $superior WHERE id_pagina = $inferior";
+                    echo "$update";
         			if ($base->ExecuteQuery($update)) {
         				echo "Movido a $inferior $superior";
         				?>
