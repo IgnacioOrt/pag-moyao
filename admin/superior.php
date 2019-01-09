@@ -22,7 +22,6 @@
     		}
         }else{
         	$query = "SELECT *FROM subpagina WHERE id_pagina = $inferior";
-        	echo "$query";
         	$res = $base->ExecuteQuery($query);
         	if ($res) {
         		if ($row = $base->GetRows($res)) {

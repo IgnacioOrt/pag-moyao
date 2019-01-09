@@ -112,6 +112,7 @@
                                             require_once 'php/funciones.php';
                                             $base = new dbmysqli($hostname,$username,$password,$database);
                                             $query2 = "SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
+                                            echo "$query2";
                                             if($result = getPaginas($base)){
                                                 while ($row=$base->GetRows($result)){
                                                     ?>
@@ -125,51 +126,51 @@
                                                         </td>
                                                         <td>
                                                             <!-- LISTA DE SELECTORES -->
-                                                            <form class="form-inline" method="POST" action="#">
-                                                                <div class="form-group">
-                                                                    <label for="select">Superior  </label>
-                                                                    <select class="form-control" id="select<?php echo($row[0])?>" name="superior" onchange="obtenerID(<?php echo ($row[0]) ?>)">
-                                                                        <option selected value="1">Página principal (sin superior)</option>
-                                                                        <?php
-                                                                            $result2 = $base->ExecuteQuery($query2);
-                                                                            if ($result2) {
-                                                                                $query3 = "SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
-                                                                                //echo "<script>console.log('$query3');</script>";
-                                                                                //echo "<script>console.log('$row[0]');</script>";
-                                                                                
-                                                                                while ($row2=$base->GetRows($result2)) {
-                                                                                    $result3 = $base->ExecuteQuery($query3);
-                                                                                    if ($result3) {
-                                                                                        if ($sql = $base->GetRows($result3)) {
-                                            //$ROW SELECT pagina.id_pagina, pagina.title FROM pagina
+                                                            <div class="form-group">
+                                                                <label for="select">Superior  </label>
+                                                                <select class="form-control" id="select<?php echo($row[0])?>" name="superior" onchange="obtenerID(<?php echo ($row[0]) ?>)">
+                                                                    <option selected value="1">Página principal (sin superior)</option>
+                                                                    <?php
+                                                                    $result2 = $base->ExecuteQuery($query2);
+                                                                    if ($result2) {
+                                                                        $query3 = "SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
+                                                                        //echo "<script>console.log('$query3');</script>";
+                                                                        //echo "<script>console.log('$row[0]');</script>";
+                                                                        while ($row2=$base->GetRows($result2)) {
+                                                                            $result3 = $base->ExecuteQuery($query3);
+                                                                            if ($result3) {
+                                                                                if ($sql = $base->GetRows($result3)) {
+                                                                                    //$ROW SELECT pagina.id_pagina, pagina.title FROM pagina
                                             //$ROW2 SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina
                                             //$ SQL SELECT pagina_superior FROM subpagina WHERE id_pagina = $row[0]
-                                                                                            echo "<script>console.log('$sql[0]'+ ' es seleccionado' + ' $row2[0]' + $row[0]);</script>";
-                                                                                            if ($row[0] != $row2[0]) {
-                                                                                                //echo "<script>console.log('$row2[0]'+ 'es seleccionado');</script>";
-                                                                                                $ultimo = "SELECT pagina.id_pagina,pagina.title FROM subpagina WHERE id_pagina = $sql[0]";
-                                                                                                if ($ks = $base->ExecuteQuery($ultimo)){
-                                                                                                    if ($f = $base->GetRows($ks)) {
-                                                                                                        ?>
-                                                                                                <option value="<?php echo($row2[0])?>" selected><?php echo($row2[1]) ?></option>
-                                                                                                <?php
-                                                                                                    }
+                                                                                    echo "<script>console.log('sql = '+'$sql[0]' + ' row2 = ' + '$row2[0]' + ' row = ' + $row[0]);</script>";
+                                                                                    if ($row[0] != $row2[0]) {
+                                                                                        //echo "<script>console.log('$row2[0]'+ 'es seleccionado');</script>";
+                                                                                        if ($row[0] == 1) {
+                                                                                            $ultimo = "SELECT pagina.id_pagina,pagina.title FROM pagina WHERE id_pagina = $sql[0]";
+                                                                                            echo "<script>console.log('$ultimo');</script>";
+                                                                                            if ($ks = $base->ExecuteQuery($ultimo)){
+                                                                                                if ($f = $base->GetRows($ks)) {
+                                                                                                    ?>
+                                                                                                    <option value="<?php echo($row2[0])?>" selected><?php echo($row2[1]) ?></option>
+                                                                                                    <?php
                                                                                                 }
-                                                                                            }
-                                                                                        }else{
-                                                                                            if ($row[0] != $row2[0]) {
-                                                                                                ?>
-                                                                                                <option value="<?php echo($row2[0])?>"><?php echo($row2[1]) ?></option>
-                                                                                                <?php
                                                                                             }
                                                                                         }
                                                                                     }
+                                                                                }else{
+                                                                                    if ($row[0] != $row2[0]) {
+                                                                                        ?>
+                                                                                        <option value="<?php echo($row2[0])?>"><?php echo($row2[1]) ?></option>
+                                                                                        <?php
+                                                                                    }
                                                                                 }
                                                                             }
-                                                                        ?>
-                                                                    </select>
-                                                                </div>
-                                                            </form>
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <?php
