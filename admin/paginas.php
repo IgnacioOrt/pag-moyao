@@ -120,7 +120,7 @@
                                                         <td class="text-nowrap"><a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank"><?php echo($row[1]) ?></a><br>
                                                             <a href="edit.php?id_pagina=<?php echo($row[0])?>">Editar |</a>
                                                             <!-- <a href="">Edición rapida |</a> -->
-                                                            <a href="delete.php?id_pagina=<?php echo($row[0])?>" onclick="return confirm('¿Esta seguro que desea eliminar?');">Eliminar |</a>
+                                                            <a href="paginas.php?id_pagx=<?php echo($row[0])?>" onclick="return confirm('¿Esta seguro que desea eliminar?');">Eliminar |</a>
                                                             <a href="../pagina.php?id_pagina=<?php echo($row[0]) ?>" target="_blank">Vista previa</a>
                                                         </td>
                                                         <td>
@@ -180,6 +180,40 @@
                                             }
 
                                         ?>
+										
+										<?php
+											if(isset($_REQUEST['id_pagx'])){
+												require_once 'config/config.php';
+    											require_once 'config/conexion.php';
+												$base = new dbmysqli($hostname,$username,$password,$database); 
+												$id_pagina = $_GET['id_pagx'];
+												$delete="delete from subpagina where id_pagina='$id_pagina' or pagina_superior='$id_pagina'";
+												$result = $base->ExecuteQuery($delete); 
+												if($result){
+													$del2="delete from pagina where id_pagina='$id_pagina'";
+													$result2 = $base->ExecuteQuery($del2); 
+													if($result2){
+														$to="Eliminado correctamente";
+														 echo "<span  style='color:red;font-weight:bolder;'>Entrada eliminada correctamente</span>";
+													}else{
+														$to="error al eliminar";
+														 echo "<span  style='color:red;font-weight:bolder;'>Error al eliminar la entrada</span>";
+													}
+												}else{
+													echo("error al eliminar");
+												}
+												$delete="DELETE FROM archivos WHERE id_pagina = $id_pagina";
+												$result = $base->ExecuteQuery($delete); 
+												if($result){
+													//echo("Eliminado correctamente");
+												}else{
+													//echo("error al eliminar");
+												}
+
+												//echo "<meta http-equiv='refresh' content='0; url=paginas.php'>";
+											}
+										
+										?>
                                         <!-- <td>31,589</td> -->
                                     </tr>
                                     </tbody>
