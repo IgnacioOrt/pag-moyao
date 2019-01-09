@@ -111,8 +111,10 @@
                                             require_once 'config/conexion.php';
                                             require_once 'php/funciones.php';
                                             $base = new dbmysqli($hostname,$username,$password,$database);
+                                            $query = "SELECT pagina.id_pagina, pagina.title FROM pagina";
                                             $query2 = "SELECT id_pagina,title FROM pagina WHERE id_pagina NOT IN (SELECT id_pagina FROM subpagina)";
-                                            if($result = getPaginas($base)){
+                                            $result = $base->ExecuteQuery($query);
+                                            if($result){
                                                 while ($row=$base->GetRows($result)){
                                                     ?>
                                                     <tr>

@@ -17,8 +17,7 @@
 	
 <body class="sidebar-fixed header-fixed">
 	<?php session_start(); 
-	if(!isset($_SESSION['nom'])) header("Location: login.html");
-
+	if(!isset($_SESSION['nom']))   echo '<script>window.location="login.html";</script>';
 	?>
 <div class="page-wrapper">
     <nav class="navbar page-header">
@@ -29,7 +28,7 @@
         <a href="../index.php" class="btn btn-secondary" target="_blank" >
             <i class="icon icon-home"> <span class="texto2">Visitar sitio</span></i>
         </a>
-        <a href="agregarPagina.php" class="btn btn-secondary" target="_blank">
+        <a href="agregarPagina.php" class="btn btn-secondary">
             <i class="icon icon-plus"><span class="texto2"> Añadir</span> </i>
         </a>
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">

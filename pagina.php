@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -51,14 +49,8 @@
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-
-          
-			<ul class="navbar-nav ml-auto">
-            <li class="nav-item py-2">
-
           <ul class="navbar-nav ml-auto">
             <li class="nav-item ">
-
               <a class="nav-link" href="index.php">Inicio</a>
             </li>
             <?php
@@ -77,19 +69,29 @@
                       ?>
                         <li class="nav-item dropdown">
                           <!-- pagina.php?id_pagina=<?php echo($row[0]) ?> -->
-                          <a class="nav-link dropdown-toggle show"  href="pagina?id_pagina=<?php echo ($fila[0]); ?>" data-toggle="dropdown" id="navbarDropdown" data-target="#my-target"><?php echo ($fila[1]); ?></a>
+                          <a class="nav-link dropdown-toggle show"  href="pagina.php?id_pagina=<?php echo ($fila[0]); ?>" data-toggle="dropdown" id="navbarDropdown" data-target="#my-target"><?php echo ($fila[1]); ?></a>
                           <div class="dropdown">
                             <div class="dropdown-menu">
                               <?php
-                                $select = "SELECT pagina.id_pagina,pagina.title FROM pagina WHERE pagina.id_pagina = (SELECT id_pagina FROM subpagina WHERE pagina_superior = $row[0])";
+                                $select = "SELECT id_pagina FROM subpagina WHERE subpagina.pagina_superior = $fila[0]";
                                 $res2 = $base->ExecuteQuery($select);
                                 if ($res2) {
                                   while ($subpaginas = $base->GetRows($res2)) {
-                                    ?>
-                                      <a class="dropdown-item" href="pagina.php?id_pagina=<?php echo($subpaginas[0]) ?>"><?php echo ($subpaginas[1]); ?></a>
+                                    $nuevo_select = "SELECT id_pagina,title FROM pagina WHERE id_pagina = $subpaginas[0]";
+                                    $res3 = $base->ExecuteQuery($nuevo_select);
+                                    if ($res3) {
+                                      while ($pags = $base->GetRows($res3)) {
+                                        ?>
+                                      <a class="dropdown-item" href="pagina.php?id_pagina=<?php echo($pags[0]) ?>"><?php echo ($pags[1]); ?></a>
                                     <?php
+                                      }
+                                    }else{
+                                      echo "Error al conectar";
+                                    }
                                   }
                                   $base->SetFreeResult($res2);
+                                }else{
+                                  echo "Error al seleccionar";
                                 }
                               ?>
                             </div>
@@ -117,8 +119,6 @@
               }
               ?>
           </ul>
-			
-			
         </div>
       </div>
     </nav>

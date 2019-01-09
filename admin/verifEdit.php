@@ -34,5 +34,5 @@ foreach($_FILES["miarchivo"]['tmp_name'] as $key => $tmp_name)
       closedir($dir); //Cerramos la conexion con la carpeta destino
     }
 }
-header("Location:edit.php?id_pagina=$id");
+echo "<script>window.location='edit.php?id_pagina=".$id."';</script>";
 ?>
