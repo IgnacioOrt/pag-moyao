@@ -140,14 +140,15 @@
         $result2 = $base->ExecuteQuery($paginas);
         if ($result2) {
             while ($row2= $base->GetRows($result2)) {
-                $tienesuperior = "SELECT id_pagina,pagina_superior FROM subpagina WHERE id_pagina = $row2[0]";
-                //echo "<script>console.log('$tienesuperior');</script>";
+                $tienesuperior = "SELECT id_pagina,pagina_superior FROM subpagina WHERE id_pagina = $row[0]";
+                echo "<script>console.log('$tienesuperior');</script>";
                 
                     if ($result3 = $base->ExecuteQuery($tienesuperior)) {
                         echo "<script>console.log('row = ' + $row[0] + ' row2 = ' + $row2[0]);</script>";
                         if ($sup = $base->GetRows($result3)) {
                             echo "<script>console.log('inferior = ' + $sup[0] + ' superior = ' + $sup[1]);</script>";
                             //echo "<script>console.log('row = ' + $row[0] + ' row2 = ' + $row2[0]);</script>";
+
                             if ($row2[0] != $row[0] && $sup[0] = $row[0] && $sup[1] == $row2[0]) {
                                 echo "<script>console.log('tiene un mayor');</script>";
                                 ?>
