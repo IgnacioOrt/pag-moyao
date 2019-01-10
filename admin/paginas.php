@@ -101,7 +101,7 @@
                                         <button class="btn btn-outline-secondary btn-sm"><a href="php/restablecer.php" style="color:black;">Restablecer orden de  las páginas</a></button>
                                     </div>
                                     <div class="col-md-4">
-                                        <button class="btn btn-outline-secondary btn-sm"><a href="php/restablecer.php" style="color:black;">Borrar todas las páginas</a></button>
+                                        <button class="btn btn-outline-secondary btn-sm"><a href="php/reset.php" style="color:black;">Borrar todas las páginas</a></button>
                                     </div>
                                 </div>
                                 </div>

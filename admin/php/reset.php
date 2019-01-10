@@ -4,5 +4,7 @@
     $base = new dbmysqli($hostname,$username,$password,$database);
     $reset = "truncate table pagina";
     $base->ExecuteQuery($reset);
+    $reset = "truncate table subpagina";
+    $base->ExecuteQuery($reset);
     echo '<script>window.location="../paginas.php";</script>';
 ?>
