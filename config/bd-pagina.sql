@@ -59,3 +59,10 @@ SELECT pagina.title FROM pagina WHERE pagina.id_pagina = (SELECT id_pagina FROM 
 
 SELECT id_pagina FROM subpagina WHERE subpagina.pagina_superior = 8;
 SELECT id_pagina,title FROM pagina WHERE id_pagina = 9;
+
+INSERT INTO `pagina` (`title`, `content`) VALUES
+('Prueba', '<p>Pagina de prueba 1</p>'),
+('Prueba 2', '<p>Pagina de prueba 2</p>'),
+('Prueba 3', '<p>asd asd asd asd</p>'),
+('Prueba 4', '<p>asd asda sdasda</p>'),
+('Prueba 5 ', '<p>asd asd asd asd a</p>');

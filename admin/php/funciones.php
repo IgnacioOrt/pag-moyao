@@ -1,5 +1,5 @@
 <?php
-	function isSuperior($id,$base)
+	function isEqual($id,$base)
 	{
 		
 	}
