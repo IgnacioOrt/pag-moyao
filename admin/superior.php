@@ -15,7 +15,7 @@
         	$result = $base->ExecuteQuery($delete); 
     		if($result){
     			?>
-    			<!-- <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php"> -->
+    			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php">
     			<?php
     		}else{
     			echo "Error al borrar";
@@ -30,7 +30,7 @@
         			if ($base->ExecuteQuery($update)) {
         				echo "Movido a $inferior $superior";
         				?>
-        				<!-- <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php"> -->
+        				<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php">
         				<?php
         			}else{
         				echo "Error al mover";
@@ -39,7 +39,7 @@
         			$insert = array("id_pagina" => $inferior, "pagina_superior" => $superior);
         			$base ->insertar("subpagina", $insert);
         			?>
-        			<!-- <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php"> -->
+        			<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=paginas.php">
         			<?php
         		}
         		$base->SetFreeResult($res);

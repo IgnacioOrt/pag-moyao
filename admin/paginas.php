@@ -94,11 +94,14 @@
                                 <div id="cambios"></div>
                                 <div class="mb-4">
                                     <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <button class="btn btn-outline-secondary btn-sm"><a href="agregarPagina.php" style="color:black;">Agregar página</a></button>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <button class="btn btn-outline-secondary btn-sm"><a href="php/restablecer.php" style="color:black;">Restablecer orden de  las páginas</a></button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-outline-secondary btn-sm"><a href="php/restablecer.php" style="color:black;">Borrar todas las páginas</a></button>
                                     </div>
                                 </div>
                                 </div>
