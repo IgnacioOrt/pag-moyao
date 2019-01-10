@@ -15,6 +15,9 @@
 	
 </head>
 <body class="sidebar-fixed header-fixed">
+    <?php session_start(); 
+    if(!isset($_SESSION['nom']))   echo '<script>window.location="login.html";</script>';
+    ?>
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
